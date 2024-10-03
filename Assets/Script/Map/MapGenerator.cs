@@ -83,7 +83,9 @@ public class MapGenerator : MonoBehaviour
                     newMapIcon.GetComponent<Image>().sprite = normalMapIcon;
                 }
             }
-            //newMapIcon.SetActive(true);
+            
+
+
         }
     }
     private void RandomMapGenerator()
@@ -214,15 +216,17 @@ public class MapGenerator : MonoBehaviour
             Debug.Log("끝방 : " + endMapList[i]);
         }
     }
-    private void SetMapIcon()
+    private void SetMapEvent()
     {
-        for(int i = 0;  i < mapImageObject.Count; i++)
-        {
-            
-        }
+        //맵에 저장된 데이터 및 타입 읽기
+        //만약 일반 맵이면, 몬스터 랜덤으로 소환
+        //만약 상점 맵이면, 몬스터 소환하지 말고, 상점 ui띄우기
+        //만약 상자 보상 맵이면, 몬스터 소환하지 말고, 보상 ui띄윅
+        //만약 보스 맵이면, 정해진 또는 랜덤으로 보스 몬스터 소환
         
 
     }
+
     //숫자를 좌표로 변경
     public (int x, int y) ConvertToCoordinates(int roomNumber)
     {

@@ -3,7 +3,6 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
     public CardData cardData;
-
     public void Initialize(CardData data)
     {
         cardData = data;

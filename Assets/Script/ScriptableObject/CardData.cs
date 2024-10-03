@@ -18,7 +18,8 @@ public enum CardElement
     Grass
 }
 
-public class CardData
+[CreateAssetMenu()]
+public class CardData : ScriptableObject
 {
     public string cardName;
     public CardType cardType;
