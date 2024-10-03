@@ -2,17 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardData : MonoBehaviour
+public enum CardType
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    Attack,
+    Defense,
+    Resource
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+public enum CardElement
+{
+    Light,
+    Dark,
+    Water,
+    Fire,
+    Grass
+}
+
+public class CardData
+{
+    public string cardName;
+    public CardType cardType;
+    public int cost;
+    public Sprite cardImage;
+    public string cardDescription;
+    public CardElement cardElement;
+
 }
