@@ -377,6 +377,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapsPrefeb: {fileID: 5599276115197206883, guid: 3e1f03e5a1b55b34a8f262f12701a493, type: 3}
+  startMapIcon: {fileID: -203395220, guid: c74ae8901c2dc1b4cbbd479f3c9f9127, type: 3}
+  normalMapIcon: {fileID: -1348069526, guid: c74ae8901c2dc1b4cbbd479f3c9f9127, type: 3}
+  shopMapIcon: {fileID: -1505783982, guid: c74ae8901c2dc1b4cbbd479f3c9f9127, type: 3}
+  treasureMapIcon: {fileID: -652713356, guid: c74ae8901c2dc1b4cbbd479f3c9f9127, type: 3}
+  bossMapIcon: {fileID: -1735714118, guid: c74ae8901c2dc1b4cbbd479f3c9f9127, type: 3}
 --- !u!1 &1768339980
 GameObject:
   m_ObjectHideFlags: 0
