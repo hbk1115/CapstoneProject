@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum CardType
@@ -21,6 +19,7 @@ public enum CardElement
 [CreateAssetMenu()]
 public class CardData : ScriptableObject
 {
+    public int id; // 카드의 고유 ID
     public string cardName;
     public CardType cardType;
     public int cost;
@@ -28,4 +27,8 @@ public class CardData : ScriptableObject
     public string cardDescription;
     public CardElement cardElement;
 
+    public void AssignId(int newId)
+    {
+        id = newId;
+    }
 }

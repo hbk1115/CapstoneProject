@@ -1,14 +1,16 @@
 using UnityEngine;
 
-public class Card : MonoBehaviour
+public class BaseCard : MonoBehaviour
 {
     public CardData cardData;
-    public void Initialize(CardData data)
+
+    public void Init(Transform cardHolder, CardData data)
     {
         cardData = data;
+        // 카드 이미지와 설명을 설정하는 로직을 추가할 수 있습니다.
     }
 
-    public bool Play(Deck deck, Player player)
+    public bool Play(Player player)
     {
         if (player.CurrentEnergy < cardData.cost)
         {
@@ -18,6 +20,7 @@ public class Card : MonoBehaviour
 
         player.CurrentEnergy -= cardData.cost; // 에너지 차감
 
+        // 카드 타입에 따른 로직 처리
         switch (cardData.cardType)
         {
             case CardType.Attack:
@@ -31,8 +34,6 @@ public class Card : MonoBehaviour
                 break;
         }
 
-        deck.ReturnCardToDeck(cardData); // 카드 사용 후 덱으로 돌아가기
-        Destroy(gameObject); // 카드 오브젝트 제거
         return true; // 카드 사용 성공
     }
 }
