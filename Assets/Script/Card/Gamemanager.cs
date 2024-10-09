@@ -28,11 +28,19 @@ public class GameManager : MonoBehaviour
         cardGenerator.AllCardList.Add(warriorCard);
         Debug.Log("Warrior 카드 데이터가 성공적으로 생성되었습니다."); // 카드 데이터 생성 확인
 
+        Player.instance.CardGenerator = cardGenerator;
+        Player.instance.GenerateCard("Warrior");
+        Player.instance.GenerateCard("Warrior");
+        Player.instance.GenerateCard("Warrior");
+        Player.instance.GenerateCard("Warrior");
+        Player.instance.GenerateCard("Warrior");
+        Player.instance.GenerateCard("Warrior");
+
         // 플레이어 생성 및 초기화
-        Player player = gameObject.AddComponent<Player>();
-        player.CardGenerator = cardGenerator; // CardGenerator 연결
+        //Player player = gameObject.AddComponent<Player>();
+        //player.CardGenerator = cardGenerator; // CardGenerator 연결
 
         // 카드 생성 예시: 랜덤 카드 생성
-        player.GenerateRandomCard(); // 예시 랜덤 카드 생성
+        //player.GenerateRandomCard(); // 예시 랜덤 카드 생성
     }
 }

@@ -38,7 +38,7 @@ public class CardGenerator : MonoBehaviour
             return null;
         }
 
-        BaseCard baseCard = Instantiate(BaseCardPrefab, CardParent);
+        BaseCard baseCard = Instantiate(BaseCardPrefab);
         cardData.AssignId(GenerateNumber); // 카드 데이터에 ID를 할당
         baseCard.name = $"player.{cardData.CardName}"; // 카드의 이름을 "player."로 시작하게 설정
         GenerateNumber++; // 다음 카드 생성 시 ID 증가

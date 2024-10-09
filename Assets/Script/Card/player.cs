@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int CurrentEnergy { get; set; } = 3; // 기본 에너지
+    static public Player instance;
+    public int CurrentEnergy { get; set; } = 10; // 기본 에너지
     public CardGenerator CardGenerator; // CardGenerator 인스턴스
-    private List<CardData> PlayerDeck = new List<CardData>(); // 플레이어의 카드 덱
+    public List<BaseCard> PlayerDeck = new List<BaseCard>(); // 플레이어의 카드 덱
 
-    void Start()
+    void Awake()
     {
-        // 카드 생성 예시: "Warrior" 카드 생성
-        GenerateCard("Warrior");
+        instance = this;
         ShowPlayerDeck(); // 현재 플레이어 덱 표시
     }
 
@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
             }
 
             Debug.Log($"{generatedCard.CardData.CardName} 카드가 생성되었습니다.");
-            PlayerDeck.Add(generatedCard.CardData); // 플레이어의 덱에 추가
+            PlayerDeck.Add(generatedCard); // 플레이어의 덱에 추가
             CurrentEnergy--; // 카드를 생성하면 에너지 감소
         }
         else
@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
         Debug.Log("플레이어 덱:");
         foreach (var card in PlayerDeck)
         {
-            Debug.Log($"- {card.CardName}");
+            Debug.Log($"- {card}");
         }
     }
 }
