@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 646c92a397b653d43b0edec724fdb833, type: 3}
-  m_Name: BattleData_1
+  m_Name: BattleData_1 2
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 2631937048765714452, guid: 690902ea3592b1340bb44aca6714dd61, type: 3}
-  - {fileID: 2631937048765714452, guid: 690902ea3592b1340bb44aca6714dd61, type: 3}
+  - {fileID: 3111890697316060967, guid: b46a81e04bf4e4f41926d51e3788093a, type: 3}
+  - {fileID: 8081274862001157789, guid: 4ef855d8f3bb13f468857ddb4e4161df, type: 3}
   spawnPos:
   - {x: 5, y: -4, z: 0}
   - {x: 7, y: -4, z: 0}

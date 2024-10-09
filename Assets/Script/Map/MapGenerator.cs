@@ -6,6 +6,17 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum ERoomType
+{
+    Elite = 0,
+    Enemy = 1,
+    Merchant = 2,
+    Rest = 3,
+    Treasure = 4,
+    Unknown = 5,
+    Size = 6
+}
+
 public class MapGenerator : MonoBehaviour
 {
     [SerializeField] protected GameObject mapsPrefeb;
@@ -81,11 +92,13 @@ public class MapGenerator : MonoBehaviour
                 else
                 {
                     newMapIcon.GetComponent<Image>().sprite = normalMapIcon;
+                    newMapIcon.GetComponent<Button>().onClick.RemoveAllListeners();
+                    newMapIcon.GetComponent<Button>().onClick.AddListener(() =>
+                    {
+                        RoomManager.instance.EnterRoom(ERoomType.Enemy);
+                    });
                 }
             }
-            
-
-
         }
     }
     private void RandomMapGenerator()
