@@ -7,11 +7,18 @@ public class Player : MonoBehaviour
     public int CurrentEnergy { get; set; } = 10; // 기본 에너지
     public CardGenerator CardGenerator; // CardGenerator 인스턴스
     public List<BaseCard> PlayerDeck = new List<BaseCard>(); // 플레이어의 카드 덱
+    public CharacterState CharacterStat { get; private set; }
 
     void Awake()
     {
         instance = this;
+        Init();
         ShowPlayerDeck(); // 현재 플레이어 덱 표시
+    }
+
+    void Init()
+    {
+        CharacterStat = GetComponent<CharacterState>();
     }
 
     // 카드 생성 메서드
@@ -35,7 +42,7 @@ public class Player : MonoBehaviour
                 return; // 생성된 카드가 null일 경우 메서드 종료
             }
 
-            Debug.Log($"{generatedCard.CardData.CardName} 카드가 생성되었습니다.");
+            Debug.Log($"{generatedCard.CardData.cardName} 카드가 생성되었습니다.");
             PlayerDeck.Add(generatedCard); // 플레이어의 덱에 추가
             CurrentEnergy--; // 카드를 생성하면 에너지 감소
         }
@@ -56,7 +63,7 @@ public class Player : MonoBehaviour
 
         int randomIndex = Random.Range(0, CardGenerator.AllCardList.Count); // 랜덤 인덱스 생성
         CardData randomCardData = CardGenerator.AllCardList[randomIndex]; // 랜덤 카드 데이터 선택
-        GenerateCard(randomCardData.CardName); // 선택한 카드 데이터로 카드 생성
+        GenerateCard(randomCardData.cardName); // 선택한 카드 데이터로 카드 생성
     }
 
     // 카드 목록 확인

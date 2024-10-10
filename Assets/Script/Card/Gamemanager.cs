@@ -14,27 +14,17 @@ public class GameManager : MonoBehaviour
         }
 
         // 카드 데이터 리스트 초기화
-        cardGenerator.AllCardList = new List<CardData>();
-
-        // "Warrior" 카드 데이터 생성
-        CardData warriorCard = ScriptableObject.CreateInstance<CardData>();
-        warriorCard.CardName = "Warrior";
-        warriorCard.CardType = CardType.Attack;
-        warriorCard.Cost = 1;
-        warriorCard.CardDescription = "A fierce warrior card.";
-        warriorCard.CardElement = CardElement.Fire;
+        //cardGenerator.AllCardList = new List<CardData>();
 
         // 카드 데이터를 리스트에 추가
-        cardGenerator.AllCardList.Add(warriorCard);
+       // cardGenerator.AllCardList.Add(warriorCard);
         Debug.Log("Warrior 카드 데이터가 성공적으로 생성되었습니다."); // 카드 데이터 생성 확인
 
         Player.instance.CardGenerator = cardGenerator;
-        Player.instance.GenerateCard("Warrior");
-        Player.instance.GenerateCard("Warrior");
-        Player.instance.GenerateCard("Warrior");
-        Player.instance.GenerateCard("Warrior");
-        Player.instance.GenerateCard("Warrior");
-        Player.instance.GenerateCard("Warrior");
+        Player.instance.GenerateRandomCard();
+        Player.instance.GenerateRandomCard();
+        Player.instance.GenerateRandomCard();
+        Player.instance.GenerateRandomCard();
 
         // 플레이어 생성 및 초기화
         //Player player = gameObject.AddComponent<Player>();

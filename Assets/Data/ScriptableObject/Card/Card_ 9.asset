@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a3363043ed4f724b8ae825179fd8342, type: 3}
-  m_Name: Card_1
+  m_Name: Card_ 9
   m_EditorClassIdentifier: 
-  cardName: "\uACF5\uACA9"
+  id: 9
+  cardName: "\uC5BC\uC74C\uCC3D"
   cardType: 0
-  cost: 1
-  cardImage: {fileID: 0}
-  cardDescription: "\uACF5\uACA9\uD55C\uB2E4"
-  cardElement: 0
+  cardAttackArea: 3
+  cost: 8
+  cardImage: {fileID: -558989329, guid: 9e702445110e7a04c8c767a63f78fb86, type: 3}
+  cardDescription: "\uB3D9\uC0C1 \uC0C1\uD0DC\uC778 \uBB34\uC791\uC704 \uC801\uC5D0\uAC8C
+    \uD53C\uD574\uB97C 50\uC90D\uB2C8\uB2E4"
+  cardElement: 1

@@ -7,7 +7,7 @@ public class BattleManager : MonoBehaviour
     static public BattleManager instance;
 
     private BattleData currentBattleData;
-    private List<Enemy> enemyList;
+    public List<Enemy> enemyList;
     [SerializeField] GameObject EnemyTrans;
 
     private void Awake()

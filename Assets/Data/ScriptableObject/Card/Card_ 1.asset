@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a3363043ed4f724b8ae825179fd8342, type: 3}
-  m_Name: New Card Data
+  m_Name: Card_ 1
   m_EditorClassIdentifier: 
   id: 1
-  cardName: asd
+  cardName: "\uD683\uBD88"
   cardType: 0
+  cardAttackArea: 0
   cost: 1
-  cardImage: {fileID: 0}
-  cardDescription: "\uACF5\uACA9\uD55C\uB2E4"
-  cardElement: 0
+  cardImage: {fileID: -1826541823, guid: 9e702445110e7a04c8c767a63f78fb86, type: 3}
+  cardDescription: "\uB9E8 \uC55E\uC758 \uC801\uC5D0\uAC8C \uD53C\uD574\uB97C 3 \uC90D\uB2C8\uB2E4"
+  cardElement: 2
