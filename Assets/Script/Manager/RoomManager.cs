@@ -29,19 +29,8 @@ public class RoomManager : MonoBehaviour
         battle2Index = 0;
         unknownIndex = 0;
 
-        //firstAct1BattleData.ShuffleList();
+        firstAct1BattleData.ShuffleList();
     }
-
-    /*    private void Awake()
-        {
-            battle1Index = 0;
-            battle2Index = 0;
-            unknownIndex = 0;
-
-            firstAct1BattleData.ShuffleList();
-            secondAct1BattleData.ShuffleList();
-            act1UnknownData.ShuffleList();
-        }*/
 
     public void EnterRoom(ERoomType roomType)
     {

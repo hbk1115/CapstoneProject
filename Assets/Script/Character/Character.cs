@@ -7,4 +7,5 @@ public abstract class Character : MonoBehaviour
 {
     public abstract void Dead();
     public abstract void Hit(int damage, Character attacker);
+    public abstract void Act();
 }

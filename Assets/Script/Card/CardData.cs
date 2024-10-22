@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum CardType
 {
@@ -38,6 +40,12 @@ public class CardData : ScriptableObject
     public Sprite cardImage; // 카드 이미지
     public string cardDescription; // 카드 설명
     public CardElement cardElement; // 카드 속성
+
+    [Header("카드 수치")]
+    public int attackPower;
+
+    [Header("사용효과")]
+    public List<UnityEvent> useEffect;
 
     public void AssignId(int newId)
     {

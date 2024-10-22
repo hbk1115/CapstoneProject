@@ -4,11 +4,17 @@ using UnityEngine.UI;
 
 public class CardGenerator : MonoBehaviour
 {
+    static public CardGenerator instance;
+
     public BaseCard BaseCardPrefab; // 카드 프리팹
     public Transform CardParent; // 카드가 생성될 부모 오브젝트
     [SerializeField] public List<CardData> AllCardList; // 카드 데이터 리스트
     private int GenerateNumber = 1; // 카드 생성 ID 카운터
 
+    private void Awake()
+    {
+        instance = this;
+    }
     // 카드 이름으로 카드 생성
     public BaseCard GenerateCard(string cardName)
     {
@@ -44,9 +50,9 @@ public class CardGenerator : MonoBehaviour
         baseCard.name = $"player.{cardData.cardName}"; // 카드의 이름을 "player."로 시작하게 설정
         GenerateNumber++; // 다음 카드 생성 시 ID 증가
 
-        baseCard.CardData = cardData; // 생성한 카드에 카드 데이터를 할당
+        baseCard.Init(CardParent, cardData);
         baseCard.GetComponent<Image>().sprite = cardData.cardImage;
-        baseCard.transform.SetParent(CardParent);// 카드 부모 설정
+        //baseCard.transform.SetParent(CardParent);// 카드 부모 설정
         return baseCard;
     }
 
@@ -56,7 +62,9 @@ public class CardGenerator : MonoBehaviour
         int randNum = Random.Range(0, AllCardList.Count);
 
         BaseCard baseCard = Instantiate(BaseCardPrefab);
-        baseCard.CardData = AllCardList[randNum];
+        baseCard.Init(CardParent, AllCardList[randNum]);
+        baseCard.GetComponent<Image>().sprite = AllCardList[randNum].cardImage;
+
         return baseCard;
     }
 }

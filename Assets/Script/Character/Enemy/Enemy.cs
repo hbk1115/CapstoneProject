@@ -12,6 +12,8 @@ public class Enemy : Character
     public CharacterState CharacterStat { get; private set; }
     public EnemyPattern enemyPattern { get; private set; }
 
+    public int enemyPower;
+
 
     protected virtual void Awake()
     {
@@ -20,15 +22,26 @@ public class Enemy : Character
 
         CharacterStat.Init(this);
         enemyPattern.Init(this);
+
+        CharacterStat.Power = enemyPower;
     }
 
     public override void Dead()
     {
-        throw new System.NotImplementedException();
+        BattleManager.instance.enemyList.Remove(this);
+        Destroy(this.gameObject);
     }
 
     public override void Hit(int damage, Character attacker)
     {
-        throw new System.NotImplementedException();
+        CharacterStat.Hit(damage);
+    }
+    public override void Act()
+    {
+        Debug.Log("행동한당");
+
+        //EnemyPattern.Act();
+        //StartCoroutine(CharacterAnimation.CoAct(false));
+        //CharacterIndent.Visualize();
     }
 }

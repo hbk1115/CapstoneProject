@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,7 +21,8 @@ public enum ERoomType
 public class MapGenerator : MonoBehaviour
 {
     [SerializeField] protected GameObject mapsPrefeb;
-    protected Dictionary<GameObject, int> mapImageObject;
+    protected Dictionary<GameObject, int> mapImageObject = new();
+    [SerializeField] protected GameObject mapIconTrans;
 
     List<int> mapList = new();
     List<int> endMapList = new();
@@ -59,7 +61,8 @@ public class MapGenerator : MonoBehaviour
         {
             GameObject newMapIcon = Instantiate(mapsPrefeb);
 
-            newMapIcon.transform.SetParent(transform);
+            newMapIcon.transform.SetParent(mapIconTrans.transform);
+            newMapIcon.transform.localScale = Vector3.one;
 
             int posX = (mapList[i] % 10) - ((maxMapSize / 2) + 1);
             int posY = (mapList[i] / 10) - (maxMapSize / 2);
@@ -69,7 +72,7 @@ public class MapGenerator : MonoBehaviour
             newMapIcon.GetComponent<RectTransform>().localPosition = newVec;
             newMapIcon.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = mapList[i].ToString();
 
-            //mapImageObject.Add(newMapIcon, mapList[i]);
+            mapImageObject.Add(newMapIcon, mapList[i]);
 
             if (mapList[i] == startPos)
             {
@@ -96,10 +99,18 @@ public class MapGenerator : MonoBehaviour
                     newMapIcon.GetComponent<Button>().onClick.AddListener(() =>
                     {
                         RoomManager.instance.EnterRoom(ERoomType.Enemy);
+                        Debug.Log("asd" + newMapIcon);
+                        OpenMap(newMapIcon);
+                        UIManager.instance.SetMapUI(false);//¸Ê ´Ý±â
+                        
                     });
                 }
             }
+
+            newMapIcon.SetActive(false);
         }
+        var key_main = mapImageObject.FirstOrDefault(x => x.Value == startPos).Key; 
+        OpenMap(key_main);
     }
     private void RandomMapGenerator()
     {
@@ -254,5 +265,43 @@ public class MapGenerator : MonoBehaviour
         var end = ConvertToCoordinates(roomNumber);
 
         return Math.Abs(start.x - end.x) + Math.Abs(start.y - end.y);
+    }
+    public void OpenMap(GameObject mapObject)//¸Ê »óÇÏÁÂ¿ì ¹àÈ÷±â
+    {
+        int value;
+        if(mapImageObject.TryGetValue(mapObject, out value))
+        {
+
+        }
+
+        var key_main = mapImageObject.FirstOrDefault(x => x.Value == value).Key;
+        if (key_main != null)
+        {
+            key_main.SetActive(true);
+        }
+
+        var key_1 = mapImageObject.FirstOrDefault(x => x.Value == value + 1).Key;
+        if (key_1 != null)
+        {
+            key_1.SetActive(true);
+        }
+
+        var key_2 = mapImageObject.FirstOrDefault(x => x.Value == value - 1).Key;
+        if (key_2 != null)
+        {
+            key_2.SetActive(true);
+        }
+
+        var key_3 = mapImageObject.FirstOrDefault(x => x.Value == value + 10).Key;
+        if (key_3 != null)
+        {
+            key_3.SetActive(true);
+        }
+
+        var key_4 = mapImageObject.FirstOrDefault(x => x.Value == value - 10).Key;
+        if (key_4 != null)
+        {
+            key_4.SetActive(true);
+        }
     }
 }

@@ -21,3 +21,19 @@ MonoBehaviour:
   cardDescription: "\uB9E8 \uB4A4\uC758 \uC801\uC5D0\uAC8C \uD53C\uD574\uB97C 8 \uC8FC\uACE0,
     \uD654\uC0C1 \uC0C1\uD0DC\uC774\uC744 \uB2E4\uC74C \uD134\uAE4C\uC9C0 \uBD80\uC5EC\uD569\uB2C8\uB2E4."
   cardElement: 2
+  attackPower: 8
+  useEffect:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3871956817664705132, guid: 98a087a6a5ad46f46b785903c04ccd6c, type: 3}
+        m_TargetAssemblyTypeName: AttackCardEffect, Assembly-CSharp
+        m_MethodName: SampleAttack
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000}
+          m_ObjectArgumentAssemblyTypeName: CardData, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
