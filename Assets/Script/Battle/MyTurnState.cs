@@ -20,7 +20,7 @@ public class MyTurnState : BaseBattleState
 
     public override void Exit()
     {
-        BattleManager.instance.myTurn = false;
+        //BattleManager.instance.myTurn = false;
     }
 
     public override void Update()

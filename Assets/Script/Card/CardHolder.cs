@@ -151,8 +151,6 @@ public class CardHolder : MonoBehaviour
             Util.ShuffleList(_cardDeck);
         }
 
-        Debug.Log("드로우");
-
         // 덱에 한 장 뽑아서 패에 넣음
         BaseCard card = _cardDeck[_cardDeck.Count - 1];
         _cardHands.Add(card);
@@ -208,8 +206,6 @@ public class CardHolder : MonoBehaviour
     }
     public void Relocation()
     {
-        Debug.Log("재배치");
-
         // 카드 간격 설정
         float spacing = 100f;
 
@@ -219,6 +215,10 @@ public class CardHolder : MonoBehaviour
 
         for (int i = 0; i < _cardHands.Count; i++)
         {
+            _cardHands[i].GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);//앵커 중앙으로 고정
+            _cardHands[i].GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0.5f);
+            _cardHands[i].GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+
             _cardHands[i].transform.localEulerAngles = Vector3.zero; // 회전 초기화
             _cardHands[i].transform.localScale = Vector3.one; // 스케일 초기화
 

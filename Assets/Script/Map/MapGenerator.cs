@@ -98,6 +98,8 @@ public class MapGenerator : MonoBehaviour
                     newMapIcon.GetComponent<Button>().onClick.RemoveAllListeners();
                     newMapIcon.GetComponent<Button>().onClick.AddListener(() =>
                     {
+                        newMapIcon.GetComponent<Button>().enabled = false;
+                        newMapIcon.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
                         RoomManager.instance.EnterRoom(ERoomType.Enemy);
                         Debug.Log("asd" + newMapIcon);
                         OpenMap(newMapIcon);

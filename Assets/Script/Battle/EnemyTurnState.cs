@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyTurnState : BaseBattleState
 {
-    float actTime = 1f;
+    float actTime = 0.01f;
     float currentTime = 0f;
     int enemyIndex = 0;
 

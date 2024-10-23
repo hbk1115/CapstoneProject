@@ -11,7 +11,8 @@ public class MyTurnStartState : BaseBattleState
 
     public override void Enter()
     {
-        Player.instance.PlayerState.CurrentOrb += 3;//코스트 회복(나중에 수치 정하기)
+        CardHolder.instance.StartBattle(Player.instance.PlayerDeck);//처음 카드 초기화
+        Player.instance.PlayerState.CurrentOrb = Player.instance.PlayerState.MaxOrb;
     }
 
     public override void Exit()

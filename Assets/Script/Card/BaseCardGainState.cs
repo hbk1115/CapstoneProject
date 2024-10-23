@@ -66,5 +66,6 @@ public class BaseCardGainState : BaseCardState
     {
         _baseCard.onClickAction?.Invoke();
         Player.instance.AddCard(_baseCard);
+        UIManager.instance.CardInfo.SetActive(false);
     }
 }

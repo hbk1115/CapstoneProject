@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         Player.instance.GenerateRandomCard();
         Player.instance.GenerateRandomCard();
 
-        CardHolder.instance.StartBattle(Player.instance.PlayerDeck);
+        //CardHolder.instance.StartBattle(Player.instance.PlayerDeck);
 
         UIManager.instance.SetMapUI(true);
     }
