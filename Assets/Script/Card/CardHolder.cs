@@ -209,11 +209,22 @@ public class CardHolder : MonoBehaviour
     public void Relocation()
     {
         Debug.Log("재배치");
-        // 카드 배치
+
+        // 카드 간격 설정
+        float spacing = 100f;
+
+        // 중앙 정렬을 위한 시작 위치 계산
+        float totalWidth = (_cardHands.Count - 1) * spacing; // 전체 너비 계산
+        float startX = -totalWidth / 2; // 시작 위치 (중앙 정렬을 위해)
+
         for (int i = 0; i < _cardHands.Count; i++)
         {
-            _cardHands[i].transform.localEulerAngles = Vector3.one;
-            _cardHands[i].transform.localScale = Vector3.one;
+            _cardHands[i].transform.localEulerAngles = Vector3.zero; // 회전 초기화
+            _cardHands[i].transform.localScale = Vector3.one; // 스케일 초기화
+
+            // 카드의 위치 설정
+            RectTransform rectTransform = _cardHands[i].GetComponent<RectTransform>();
+            rectTransform.anchoredPosition = new Vector2(startX + i * spacing, rectTransform.anchoredPosition.y);
         }
     }
 }

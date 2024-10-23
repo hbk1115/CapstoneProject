@@ -23,11 +23,9 @@ public class EnemyTurnStartState : BaseBattleState
 
     public override void Update()
     {
-        /*
-        if (_battleManager.inBattleUI.EndStartTurn)
+        if (!BattleManager.instance.playerTurn)
         {
             _stateFactory.ChangeState(EBattleState.EnemyTurn);
         }
-        */
     }
 }

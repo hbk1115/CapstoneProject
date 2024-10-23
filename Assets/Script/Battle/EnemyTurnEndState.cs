@@ -21,6 +21,8 @@ public class EnemyTurnEndState : BaseBattleState
 
     public override void Update()
     {
+        BattleManager.instance.myTurn = true;
+        BattleManager.instance.playerTurn = true;
         _stateFactory.ChangeState(EBattleState.MyTurnStart);
     }
 }

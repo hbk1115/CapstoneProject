@@ -33,7 +33,7 @@ public class EnemyTurnState : BaseBattleState
 
         if (currentTime > actTime)
         {
-            _battleManager.enemyList[enemyIndex].Act();
+            _battleManager.enemyList[enemyIndex].enemyPattern.Act();
             currentTime = 0;
             enemyIndex++;
         }

@@ -42,7 +42,7 @@ public class BaseCardStateFactory
             _currentState.Enter();
         }
 
-        Debug.Log(_currentState + "로 상태가 전환되었습니다.");
+        //Debug.Log(_currentState + "로 상태가 전환되었습니다.");
     }
 
     public BaseCardState GetState(ECardUsage cardState)

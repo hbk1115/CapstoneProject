@@ -149,6 +149,7 @@ public class BattleManager : MonoBehaviour
         myTurn = false;
         //카드 선택 안되게 변경
 
+        /*
         for (int i = 0; i < enemyList.Count; i++)
         {
             enemyList[i].enemyPattern.Act();//모든 적의 패턴 실행
@@ -158,11 +159,11 @@ public class BattleManager : MonoBehaviour
         {
             //죽으면 게임 오버 로직 실행
         }
+        */
+        //Player.instance.PlayerState.CurrentOrb += 3;//코스트 회복(나중에 수치 정하기)
 
-        Player.instance.PlayerState.CurrentOrb += 3;//코스트 회복(나중에 수치 정하기)
+        //Player.instance.GenerateRandomCard();//카드 한장 드로우
 
-        Player.instance.GenerateRandomCard();//카드 한장 드로우
-
-        playerTurn = true;
+        //playerTurn = true;
     }
 }
