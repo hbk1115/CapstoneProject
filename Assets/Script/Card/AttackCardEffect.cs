@@ -18,4 +18,10 @@ public class AttackCardEffect : MonoBehaviour
             }
         }
     }
+
+    public void Torch()
+    {
+        BattleManager.instance.TargetEnemy(CardAttackArea.Forward).Hit(3, Player.instance);
+        //TargetEnemy = 어떤 적을 때릴지
+    }
 }
