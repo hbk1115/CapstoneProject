@@ -87,6 +87,16 @@ public class MapGenerator : MonoBehaviour
                 else if(mapList[i] == endMapList[1])
                 {
                     newMapIcon.GetComponent<Image>().sprite = treasureMapIcon;
+                    newMapIcon.GetComponent<Button>().onClick.RemoveAllListeners();
+                    newMapIcon.GetComponent<Button>().onClick.AddListener(() =>
+                    {
+                        newMapIcon.GetComponent<Button>().enabled = false;
+                        newMapIcon.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
+                        RewardManager.instance.ShowReward();
+                        OpenMap(newMapIcon);
+                        UIManager.instance.SetMapUI(false);//¸Ê ´Ý±â
+
+                    });
                 }
                 else if (mapList[i] == endMapList[2])
                 {

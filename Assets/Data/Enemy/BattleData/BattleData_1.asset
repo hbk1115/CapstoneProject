@@ -18,6 +18,6 @@ MonoBehaviour:
   spawnPos:
   - {x: 5, y: -4, z: 0}
   - {x: 7, y: -4, z: 0}
-  maxMoney: 0
-  minMoney: 0
+  maxMoney: 30
+  minMoney: 20
   isRelics: 0

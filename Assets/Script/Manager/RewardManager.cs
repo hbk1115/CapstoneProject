@@ -33,6 +33,25 @@ public class RewardManager : MonoBehaviour
     {
         instance = this;
     }
+    // 보물방 전용
+    public void ShowReward()
+    {
+        // 돈이랑 유물만
+        rewardParent.DestroyAllChild();
+
+        // 보상창 켜주기
+        //GameManager.UI.ShowThisUI(inRewardUI);
+        inRewardUI.gameObject.SetActive(true);
+
+        // 돈
+        Reward moneyReward = Instantiate(rewardPrefab, rewardParent);
+        Button moneyRewardButton = moneyReward.GetComponent<Button>();
+        int money = Random.Range(25, 37);
+        moneyReward.Init(money + "골드", moneyRewardImage);
+        moneyRewardButton.onClick.AddListener(() => GetMoney(money));
+        moneyRewardButton.onClick.AddListener(() => Destroy(moneyReward.gameObject));
+    }
+
 
     public void ShowReward(BattleData battleData)
     {
