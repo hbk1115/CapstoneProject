@@ -15,7 +15,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 3262907188476227269, guid: cacdbfe3e7bd90e4b985a01801d89c75, type: 3}
   spawnPos:
-  - {x: 6, y: -4, z: 0}
+  - {x: 0, y: 2, z: 0}
   maxMoney: 30
   minMoney: 20
   isRelics: 0

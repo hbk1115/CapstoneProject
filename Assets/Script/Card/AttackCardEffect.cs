@@ -24,4 +24,9 @@ public class AttackCardEffect : MonoBehaviour
         BattleManager.instance.TargetEnemy(CardAttackArea.Forward).Hit(3, Player.instance);
         //TargetEnemy = 어떤 적을 때릴지
     }
+
+    public void HealthUp()
+    {
+        Player.instance.PlayerState.CurrentHp += 5;
+    }
 }
