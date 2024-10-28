@@ -73,6 +73,7 @@ public class CharacterIndent : MonoBehaviour
                 Debug.Log($"Applying {indentList[i].indentData.indentName} damage to {character.name}");
                 // 매 턴마다 2의 피해를 주는 로직 추가
                 character.Hit(2, null); // null은 공격자를 의미하지 않음
+                Debug.Log("Burn");
                 indentList[i].turn--;
             }
         }

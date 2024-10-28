@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackCardEffect : MonoBehaviour
 {
-    public CharacterIndent[] indentData; // CharacterIndent 배열 추가
+    public IndentData[] indentData; // CharacterIndent 배열 추가
 
     public void SampleAttack(CardData cardData)
     {

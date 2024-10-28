@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static IndentData;
 
 public class Enemy : Character
 {
@@ -22,13 +23,22 @@ public class Enemy : Character
 
         CharacterStat.Init(this);
         enemyPattern.Init(this);
+        CharacterIndent.Init(this);
 
         CharacterStat.Power = enemyPower;
+
+        BattleManager.instance.onEndEnemyTurn += OnEndEnemyTurn;
+    }
+    protected virtual void OnEndEnemyTurn()
+    {
+        CharacterIndent.UpdateIndents();
+        Debug.Log("update indent");
     }
 
     public override void Dead()
     {
         BattleManager.instance.enemyList.Remove(this);
+        BattleManager.instance.onEndEnemyTurn -= OnEndEnemyTurn;
         Destroy(this.gameObject);
     }
 

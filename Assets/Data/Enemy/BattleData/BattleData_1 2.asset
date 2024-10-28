@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BattleData_1 2
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 3111890697316060967, guid: b46a81e04bf4e4f41926d51e3788093a, type: 3}
-  - {fileID: 8081274862001157789, guid: 4ef855d8f3bb13f468857ddb4e4161df, type: 3}
+  - {fileID: 2631937048765714452, guid: 690902ea3592b1340bb44aca6714dd61, type: 3}
+  - {fileID: 2631937048765714452, guid: 690902ea3592b1340bb44aca6714dd61, type: 3}
   spawnPos:
   - {x: -0.5, y: 2, z: 0}
   - {x: 0.5, y: 2, z: 0}

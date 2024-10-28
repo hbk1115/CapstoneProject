@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2870114808819021315
+--- !u!1 &660014665258357380
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,44 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 847396831544255997}
-  - component: {fileID: 3871956817664705132}
+  - component: {fileID: 8910144675960996758}
+  - component: {fileID: 4370642632377729203}
   m_Layer: 0
-  m_Name: AttackCardEffect
+  m_Name: IndentObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &847396831544255997
+--- !u!4 &8910144675960996758
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2870114808819021315}
+  m_GameObject: {fileID: 660014665258357380}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3785005, y: 0.3537954, z: -6.506503}
+  m_LocalPosition: {x: -1.0042187, y: 3.609817, z: 0.10470347}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3871956817664705132
+--- !u!114 &4370642632377729203
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2870114808819021315}
+  m_GameObject: {fileID: 660014665258357380}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4947d1543979fd4ea078dbc6482971a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b5bdaefc0600ee498b14a892a2f2d5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indentData:
-  - {fileID: 11400000, guid: 135e985a3b9923d48a472a4af0510f4b, type: 2}
-  - {fileID: 11400000, guid: f657900553030934c9d7830d0d2985c1, type: 2}
-  - {fileID: 11400000, guid: 7f2a864ca30405f4e81167a62f4ef695, type: 2}
-  - {fileID: 11400000, guid: 651c523791830b545bc464a655266112, type: 2}
+  indentData: {fileID: 0}
+  turn: 0

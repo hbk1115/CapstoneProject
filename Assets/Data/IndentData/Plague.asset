@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 646c92a397b653d43b0edec724fdb833, type: 3}
-  m_Name: BattleData_1 5
+  m_Script: {fileID: 11500000, guid: 55877767131c0b74ca577872f15aecca, type: 3}
+  m_Name: Plague
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 2631937048765714452, guid: 690902ea3592b1340bb44aca6714dd61, type: 3}
-  spawnPos:
-  - {x: 0, y: 2, z: 0}
-  maxMoney: 30
-  minMoney: 20
-  isRelics: 0
+  indent: 2
+  indentSprite: {fileID: 0}
+  indentName: "\uC5ED\uBCD1"
+  indentExplanation: "\uC5ED\uBCD1"
+  isTurn: 1
+  isShowTurn: 0

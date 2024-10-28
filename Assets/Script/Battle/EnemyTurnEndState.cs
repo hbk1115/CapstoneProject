@@ -11,7 +11,7 @@ public class EnemyTurnEndState : BaseBattleState
 
     public override void Enter()
     {
-        //_battleManager.onEndEnemyTurn?.Invoke();
+        BattleManager.instance.onEndEnemyTurn?.Invoke();
     }
 
     public override void Exit()

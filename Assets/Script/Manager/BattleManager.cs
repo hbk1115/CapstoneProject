@@ -18,6 +18,9 @@ public class BattleManager : MonoBehaviour
 {
     static public BattleManager instance;
 
+    public System.Action onEndEnemyTurn;       // 내 턴 끝 시 발생
+
+
     private BattleData currentBattleData;
     public List<Enemy> enemyList;
     [SerializeField] GameObject EnemyTrans;
