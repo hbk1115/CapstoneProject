@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3363043ed4f724b8ae825179fd8342, type: 3}
   m_Name: Card_ 15
   m_EditorClassIdentifier: 
-  id: 2
+  id: 7
   cardName: "\uD5C8\uC218\uC544\uBE44"
   cardType: 1
   cardAttackArea: 3
@@ -22,3 +22,19 @@ MonoBehaviour:
     \uBB34\uC791\uC704 \uC801\uC5D0\uAC8C \uB418\uB3CC\uB824 \uC8FC\uACE0, \uC77C\uBC18
     \uCE74\uB4DC\uC758 \uBE44\uC6A9\uC774 1 \uAC10\uC18C\uD569\uB2C8\uB2E4."
   cardElement: 0
+  attackPower: 0
+  useEffect:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4933565667297609325, guid: 0bfcdf818f5bd364ebb84c8cf23c18af, type: 3}
+        m_TargetAssemblyTypeName: SkillCardEffect, Assembly-CSharp
+        m_MethodName: Scarecrow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

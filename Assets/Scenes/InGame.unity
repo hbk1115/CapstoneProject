@@ -2760,6 +2760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f5d05e765308b64bbdbae02eb962466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  indent: 00000000
   CardGenerator: {fileID: 0}
   PlayerDeck: []
 --- !u!4 &807785357

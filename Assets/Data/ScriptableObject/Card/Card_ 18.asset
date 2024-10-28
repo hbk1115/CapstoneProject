@@ -22,3 +22,19 @@ MonoBehaviour:
     \uC138 \uBC88 \uBD80\uC5EC\uD569\uB2C8\uB2E4.\uC801\uC774 \uC774\uBBF8 \uC5ED\uBCD1
     \uC0C1\uD0DC\uC77C \uACBD\uC6B0, \uCCB4\uB825\uC744 20 \uD68C\uBCF5\uD569\uB2C8\uB2E4."
   cardElement: 3
+  attackPower: 0
+  useEffect:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4933565667297609325, guid: 0bfcdf818f5bd364ebb84c8cf23c18af, type: 3}
+        m_TargetAssemblyTypeName: SkillCardEffect, Assembly-CSharp
+        m_MethodName: Toxictrap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
