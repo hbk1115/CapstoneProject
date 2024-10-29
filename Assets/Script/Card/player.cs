@@ -101,9 +101,9 @@ public class Player : Character
     public override void Hit(int damage, Character attacker)
     {
         // 역병 상태 확인
-        if (attacker is Enemy enemy && enemy.indent[(int)EIndent.Plague])
+        if (attacker is Enemy enemy && enemy.indent[(int)EIndent.Freeze])
         {
-            damage += Mathf.RoundToInt(damage * 0.2f); // 20% 추가 피해
+            damage = Mathf.RoundToInt(damage * 0.7f);// 70%의 피해
             Debug.Log("Plague effect applied, damage increased to " + damage);
         }
 
