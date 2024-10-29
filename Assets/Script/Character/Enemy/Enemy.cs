@@ -44,6 +44,14 @@ public class Enemy : Character
 
     public override void Hit(int damage, Character attacker)
     {
+        // 동상 상태일 경우 공격력 30% 감소
+        if (indent[(int)EIndent.Freeze])
+        {
+            damage = Mathf.RoundToInt(damage * 0.7f);
+            Debug.Log("Freeze effect applied, damage reduced to " + damage);
+        }
+
+        Debug.Log("맞았당");
         CharacterStat.Hit(damage);
     }
 

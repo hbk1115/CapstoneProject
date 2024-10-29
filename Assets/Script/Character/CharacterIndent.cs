@@ -30,7 +30,7 @@ public class CharacterIndent : MonoBehaviour
     public void AddIndent(IndentData indentData, int value)
     {
         character.indent[(int)indentData.indent] = true;
-       
+
         Debug.Log($"Adding {indentData.indentName} to {character.name} for {value} turns");
 
         for (int i = 0; i < indentList.Count; i++)
@@ -49,11 +49,6 @@ public class CharacterIndent : MonoBehaviour
         Visualize();
     }
 
-    internal void AddIndent(CharacterIndent characterIndent, int v)
-    {
-        throw new NotImplementedException();
-    }
-
     public void Visualize()
     {
         for (int i = 0; i < indentList.Count; i++)
@@ -70,10 +65,28 @@ public class CharacterIndent : MonoBehaviour
         {
             if (indentList[i].indentData.isTurn)
             {
-                Debug.Log($"Applying {indentList[i].indentData.indentName} damage to {character.name}");
-                // 매 턴마다 2의 피해를 주는 로직 추가
-                character.Hit(2, null); // null은 공격자를 의미하지 않음
-                Debug.Log("Burn");
+                Debug.Log($"Applying {indentList[i].indentData.indentName} effect to {character.name}");
+
+                // 화상 효과 처리
+                if (indentList[i].indentData.indent == IndentData.EIndent.Burn)
+                {
+                    character.Hit(2, null);
+                    Debug.Log("Burn damage applied");
+                }
+
+                // 동상 효과 처리
+                if (indentList[i].indentData.indent == IndentData.EIndent.Freeze)
+                {
+                    Debug.Log("Freeze effect active, no damage applied");
+                }
+
+                // 역병 효과 처리
+                if (indentList[i].indentData.indent == IndentData.EIndent.Plague)
+                {
+                    // 피해를 주지 않음, 대신 다른 효과를 처리하거나 상태 변경을 진행할 수 있음
+                    Debug.Log("Plague effect active, damage handled in attack method.");
+                }
+
                 indentList[i].turn--;
             }
         }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.Rendering.VolumeComponent;
+using static IndentData;
 
 public class Player : Character
 {
@@ -9,19 +10,28 @@ public class Player : Character
     public CardGenerator CardGenerator; // CardGenerator 인스턴스
     public List<BaseCard> PlayerDeck = new List<BaseCard>(); // 플레이어의 카드 덱
     public PlayerState PlayerState { get; private set; }
+    public CharacterIndent CharacterIndent { get; private set; } // 추가된 상태 이상 관리
 
     void Awake()
     {
         instance = this;
         Init();
         ShowPlayerDeck(); // 현재 플레이어 덱 표시
+        BattleManager.instance.onEndEnemyTurn += OnEndEnemyTurn;
     }
 
     void Init()
     {
+        CharacterIndent = GetComponent<CharacterIndent>();
         PlayerState = GetComponent<PlayerState>();
-
+        
+        CharacterIndent.Init(this);
         PlayerState.Init(this);
+    }
+    protected virtual void OnEndEnemyTurn()
+    {
+        CharacterIndent.UpdateIndents();
+        Debug.Log("update indent");
     }
 
     // 카드 생성 메서드
@@ -90,7 +100,15 @@ public class Player : Character
 
     public override void Hit(int damage, Character attacker)
     {
-        PlayerState.Hit(damage);
+        // 역병 상태 확인
+        if (attacker is Enemy enemy && enemy.indent[(int)EIndent.Plague])
+        {
+            damage += Mathf.RoundToInt(damage * 0.2f); // 20% 추가 피해
+            Debug.Log("Plague effect applied, damage increased to " + damage);
+        }
+
+        PlayerState.Hit(damage); // 플레이어의 체력 감소 처리
+        Debug.Log($"{name} was hit with {damage} damage.");
     }
     public override void Act()
     {

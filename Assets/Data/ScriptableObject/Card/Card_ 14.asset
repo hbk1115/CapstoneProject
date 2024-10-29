@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3363043ed4f724b8ae825179fd8342, type: 3}
   m_Name: Card_ 14
   m_EditorClassIdentifier: 
-  id: 2
+  id: 6
   cardName: "\uB0A1\uC740 \uC190\uC218\uB808"
   cardType: 0
   cardAttackArea: 4
@@ -26,7 +26,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3871956817664705132, guid: 98a087a6a5ad46f46b785903c04ccd6c, type: 3}
         m_TargetAssemblyTypeName: AttackCardEffect, Assembly-CSharp
-        m_MethodName: Oldhandcart
+        m_MethodName: Oldcart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

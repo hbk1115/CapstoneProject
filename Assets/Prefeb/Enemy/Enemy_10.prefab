@@ -129,6 +129,41 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &2582704516063240059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5080986821083443132}
+  m_Layer: 0
+  m_Name: indent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5080986821083443132
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2582704516063240059}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7164027386163027150}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 170}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2837376906222878072
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,6 +271,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8816843010123336059}
+  - {fileID: 5080986821083443132}
   m_Father: {fileID: 2575176420007660016}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -319,6 +355,7 @@ GameObject:
   - component: {fileID: 4461499823201446775}
   - component: {fileID: 4008423184204930806}
   - component: {fileID: 7858483433873774473}
+  - component: {fileID: -7362469711504984841}
   m_Layer: 0
   m_Name: Enemy_10
   m_TagString: Untagged
@@ -406,6 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a68c4534ce7fc004f9673c33b074c1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  indent: 00000000
   _enemyGrade: 0
   enemyPower: 3
 --- !u!114 &4008423184204930806
@@ -437,6 +475,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPattern: {fileID: 11400000, guid: 3ed1c26e4d22acf4cb75374c8b2059d3, type: 2}
+--- !u!114 &-7362469711504984841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3696578363082406568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8722e3a665b4e024f8b2f265227afd97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indentParent: {fileID: 5080986821083443132}
+  indentPrefab: {fileID: 4370642632377729203, guid: 6f88dc04ed9688b409cfd2b57005455a, type: 3}
 --- !u!1 &5156797330235192152
 GameObject:
   m_ObjectHideFlags: 0
