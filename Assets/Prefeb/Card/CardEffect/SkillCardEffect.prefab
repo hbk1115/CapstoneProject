@@ -44,3 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd82081303036bb43ba3eacd87fe18c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  indentData:
+  - {fileID: 11400000, guid: 135e985a3b9923d48a472a4af0510f4b, type: 2}
+  - {fileID: 11400000, guid: f657900553030934c9d7830d0d2985c1, type: 2}
+  - {fileID: 11400000, guid: 7f2a864ca30405f4e81167a62f4ef695, type: 2}
+  - {fileID: 11400000, guid: 651c523791830b545bc464a655266112, type: 2}

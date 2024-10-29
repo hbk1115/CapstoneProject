@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
        // cardGenerator.AllCardList.Add(warriorCard);
 
         Player.instance.CardGenerator = cardGenerator;
-        Player.instance.GenerateCard("호미");
+        Player.instance.GenerateCard("맹독성 함정");
         Player.instance.GenerateRandomCard();
         Player.instance.GenerateRandomCard();
         Player.instance.GenerateRandomCard();

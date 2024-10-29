@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3363043ed4f724b8ae825179fd8342, type: 3}
   m_Name: Card_ 16
   m_EditorClassIdentifier: 
-  id: 3
-  cardName: "\uC5ED\uBCD1 \uC528\uC557 "
+  id: 2
+  cardName: "\uC5ED\uBCD1\uC528\uC557"
   cardType: 2
   cardAttackArea: 0
   cost: 1
