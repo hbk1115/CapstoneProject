@@ -70,7 +70,7 @@ public class AttackCardEffect : MonoBehaviour
     }
 
 
-    public void Waves() // 파도 안됨
+    public void Waves() // 파도
     {
         // 맨 뒤의 적 선택
         Enemy target = BattleManager.instance.TargetEnemy(CardAttackArea.Back);
@@ -86,6 +86,10 @@ public class AttackCardEffect : MonoBehaviour
             {
                 Player.instance.PlayerState.CurrentHp += 20;
                 Debug.Log("적이 동상 상태이므로 플레이어가 20 체력을 회복했습니다.");
+            }
+            else
+            {
+                Debug.Log($"{target.name}은 동상 상태가 아닙니다.");
             }
         }
         else
