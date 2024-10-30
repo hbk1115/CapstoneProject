@@ -207,7 +207,7 @@ public class CardHolder : MonoBehaviour
     public void Relocation()
     {
         // 카드 간격 설정
-        float spacing = 100f;
+        float spacing = 150f;
 
         // 중앙 정렬을 위한 시작 위치 계산
         float totalWidth = (_cardHands.Count - 1) * spacing; // 전체 너비 계산
