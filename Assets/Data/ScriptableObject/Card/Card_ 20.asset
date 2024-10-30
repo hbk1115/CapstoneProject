@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3363043ed4f724b8ae825179fd8342, type: 3}
   m_Name: Card_ 20
   m_EditorClassIdentifier: 
-  id: 6
+  id: 1
   cardName: "\uB3C5\uC131 \uD3EC\uC790"
   cardType: 1
   cardAttackArea: 4
@@ -27,7 +27,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4933565667297609325, guid: 0bfcdf818f5bd364ebb84c8cf23c18af, type: 3}
         m_TargetAssemblyTypeName: SkillCardEffect, Assembly-CSharp
-        m_MethodName: Toxicspores
+        m_MethodName: ToxicSpores
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

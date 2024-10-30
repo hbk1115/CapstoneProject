@@ -11,6 +11,7 @@ public class CharacterIndent : MonoBehaviour
     [SerializeField] private IndentObject indentPrefab;
 
     private List<IndentObject> indentList = new List<IndentObject>();
+    
 
     public void Init(Character character)
     {
@@ -109,6 +110,11 @@ public class CharacterIndent : MonoBehaviour
         }
 
         Visualize();
+    }
+
+    public bool HasIndent(IndentData.EIndent indentType)
+    {
+        return character.indent[(int)indentType];
     }
 
     public void RemoveIndent(IndentData.EIndent indentType)

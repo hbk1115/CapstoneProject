@@ -27,7 +27,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4933565667297609325, guid: 0bfcdf818f5bd364ebb84c8cf23c18af, type: 3}
         m_TargetAssemblyTypeName: SkillCardEffect, Assembly-CSharp
-        m_MethodName: Poisonarrow
+        m_MethodName: PoisonArrow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
