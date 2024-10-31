@@ -71,6 +71,7 @@ public class BaseCardSellState : BaseCardState
             Player.instance.PlayerState.Money -= 50; // 플레이어에게 돈 차감
             Player.instance.AddCard(_baseCard);
             UIManager.instance.CardInfo.SetActive(false);
+            _baseCard.CardDisappear();
         }
     }
 }

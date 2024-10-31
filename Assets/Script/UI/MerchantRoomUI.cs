@@ -31,6 +31,19 @@ public class MerchantRoomUI : MonoBehaviour
         instance = this; // 싱글턴 인스턴스 초기화
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            Player.instance.PlayerState.Money += 100;
+        }//
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            EnterMerchantRoom();//이거 보시면 제가 X키 누르면 UI뜨게 한거거든요
+            //그러니까 EnterMerchantRoom 자체가 UI를 띄우는 역할이라고 보면 됩니다.
+        }//그러면 버튼을 프리팹으로 하면 안되고 하나 그냥 만드는게 좋습니다
+    }
+
     // 상점 상품 표시 함수
     public void EnterMerchantRoom()
     {
@@ -40,13 +53,23 @@ public class MerchantRoomUI : MonoBehaviour
 
         GetCard(); // 카드 상품 생성
 
-        // 카드 상품 선택
+        //정확히 merchandise의 역할이 뭔가요
+        //그러면 EnterMerchantRoom() 이 함수 자체를 누르는게 UI를 띄우는 방법인데
+        // 카드 상품 선택<<이게 버튼이라는 것인가요? 이게 버튼이면 프리팹으로 안하고 그냥 버튼 만드는게 편할겁니다
+        /*
         Merchandise merchandise = Instantiate(merchandisePrefab, merchandiseParent); // 카드 상품 객체 생성
         Button merchandiseButton = merchandise.GetComponent<Button>(); // 카드 상품 객체의 버튼 참조
         merchandise.Init("상점 나가기", merchandiseImage); // 카드 상품 초기화
        // merchandiseButton.onClick.AddListener(() => merchandiseGameObject.gameObject.SetActive(true)); // 클릭 시 카드 상품 화면 표시
         merchandiseButton.onClick.AddListener(() => merchandiseScreen.gameObject.SetActive(false)); // 상점 화면을 비활성화
+        */
+    }
 
+    public void CloseMerchantUI()
+    {
+        //그냥 간단하게 여기에 직접 넣어도 됩니다
+        merchandiseScreen.gameObject.SetActive(false);
+        UIManager.instance.UI_Map.gameObject.SetActive(true);
     }
 
     // 10장의 랜덤 카드를 생성하는 함수
@@ -127,7 +150,7 @@ public class MerchantRoomUI : MonoBehaviour
     {
         merchandiseGameObject.gameObject.SetActive(false); // 카드 상품 UI 비활성화
         merchandiseScreen.gameObject.SetActive(true); // 전체 상점 화면 재활성화
-        Destroy(merchandise.gameObject); // 카드 상품 객체 제거
+        //Destroy(merchandise.gameObject); // 카드 상품 객체 제거//이거 없어도 될 것 같은데
+        //애초에 잘못된걸 삭제하고 있어서, 카드 오브젝트가 아닌 다른걸 삭제하고 있어서 안되는 것 같습니다.
     }
-
 }

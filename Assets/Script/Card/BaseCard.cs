@@ -105,4 +105,9 @@ public class BaseCard : MonoBehaviour
         GetComponent<Button>().onClick.RemoveAllListeners();
         GetComponent<Button>().onClick.AddListener(() => action());
     }
+
+    public void CardDisappear()
+    {
+        this.transform.localScale = Vector3.zero;
+    }
 }
