@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -27,6 +28,16 @@ public class BaseCard : MonoBehaviour
     public BaseCardState CurrentState => _baseCardStateFactory.CurrentState;
     public CardController CardController => _cardController;
 
+    [Header("카드 이미지")]
+    [SerializeField] private Image mainImage;
+    [SerializeField] private Image angleImage;
+    [SerializeField] private Image attackAreaImage;
+    [SerializeField] private Image cardTypeImage;
+
+    [SerializeField] private TextMeshProUGUI cost_Text;
+    [SerializeField] private TextMeshProUGUI name_Text;
+    [SerializeField] private TextMeshProUGUI cardType_Text;
+
     public void Init(Transform cardHolder, CardData data)
     {
         cardData = data;
@@ -35,6 +46,14 @@ public class BaseCard : MonoBehaviour
 
         _cardController.Init(this);
         // 카드 이미지와 설명을 설정하는 로직을 추가할 수 있습니다.
+        mainImage.sprite = cardData.cardImage;
+        angleImage.sprite = CardGenerator.instance.elementTypeSprite[(int)cardData.cardElement];
+        attackAreaImage.sprite = CardGenerator.instance.attackAreaTypeSprite[(int)cardData.cardAttackArea];
+        cardTypeImage.sprite = CardGenerator.instance.attackTypeSprite[(int)cardData.cardType];
+
+        cost_Text.text = cardData.cost.ToString();
+        name_Text.text = cardData.cardName.ToString();
+        cardType_Text.text = cardData.attackPower.ToString();
     }
 
     public bool Play(Player player)

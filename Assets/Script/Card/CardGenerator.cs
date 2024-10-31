@@ -11,6 +11,10 @@ public class CardGenerator : MonoBehaviour
     [SerializeField] public List<CardData> AllCardList; // 카드 데이터 리스트
     private int GenerateNumber = 1; // 카드 생성 ID 카운터
 
+    [SerializeField] public List<Sprite> attackTypeSprite;
+    [SerializeField] public List<Sprite> elementTypeSprite;
+    [SerializeField] public List<Sprite> attackAreaTypeSprite;
+
     private void Awake()
     {
         instance = this;
