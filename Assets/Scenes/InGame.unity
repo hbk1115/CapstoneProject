@@ -17604,6 +17604,24 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2fd83dbbff149224f8ea5c842fe8a7cc, type: 2}
   - {fileID: 11400000, guid: c3bcd88563d7fc54d9e52ae52d4d5be2, type: 2}
   - {fileID: 11400000, guid: 18bd0615484b6f8408f4494387922eb8, type: 2}
+  attackTypeSprite:
+  - {fileID: 1493611678, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
+  - {fileID: -578254259, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
+  - {fileID: 2004805394, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
+  elementTypeSprite:
+  - {fileID: 132191240, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
+  - {fileID: -1865600386, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
+  - {fileID: 1785391561, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
+  - {fileID: 236657481, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
+  attackAreaTypeSprite:
+  - {fileID: -263764212, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
+  - {fileID: -207385942, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
+  - {fileID: -392732219, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
+  - {fileID: -1319121750, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
+  - {fileID: 110051443, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
+  - {fileID: 1170008238, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
+  - {fileID: 1383932363, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
+  - {fileID: 445681466, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
 --- !u!4 &1847296936
 Transform:
   m_ObjectHideFlags: 0
