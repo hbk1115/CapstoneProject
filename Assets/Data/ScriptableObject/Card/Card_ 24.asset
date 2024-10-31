@@ -10,24 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a3363043ed4f724b8ae825179fd8342, type: 3}
-  m_Name: Card_ 8
+  m_Name: Card_ 24
   m_EditorClassIdentifier: 
-  id: 2
-  cardName: "\uD30C\uB3C4"
-  cardType: 0
-  cardAttackArea: 2
-  cost: 6
-  cardImage: {fileID: 1511407773, guid: 9e702445110e7a04c8c767a63f78fb86, type: 3}
-  cardDescription: "\uB9E8\uB4A4\uC758 \uC801\uC5D0\uAC8C \uD53C\uD574\uB97C 25\uC8FC\uACE0
-    \uCCB4\uB825\uC744 20\uD68C\uBCF5\uD569\uB2C8\uB2E4."
-  cardElement: 1
-  attackPower: 25
+  id: 4
+  cardName: "\uBE68\uAC04 \uD3EC\uC158"
+  cardType: 1
+  cardAttackArea: 7
+  cost: 5
+  cardImage: {fileID: -1971589375, guid: 9e702445110e7a04c8c767a63f78fb86, type: 3}
+  cardDescription: "\uCCB4\uB825\uC744 50\uD68C\uBCF5\uD569\uB2C8\uB2E4."
+  cardElement: 2
+  attackPower: 0
   useEffect:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3871956817664705132, guid: 98a087a6a5ad46f46b785903c04ccd6c, type: 3}
-        m_TargetAssemblyTypeName: AttackCardEffect, Assembly-CSharp
-        m_MethodName: Waves
+      - m_Target: {fileID: 4933565667297609325, guid: 0bfcdf818f5bd364ebb84c8cf23c18af, type: 3}
+        m_TargetAssemblyTypeName: SkillCardEffect, Assembly-CSharp
+        m_MethodName: redpotion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

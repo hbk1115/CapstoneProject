@@ -195,4 +195,131 @@ public class SkillCardEffect : MonoBehaviour
         Debug.Log("Player healed for 20 HP.");
 
     }
+
+    public void redpotion() //빨간표션
+    {
+        Player.instance.PlayerState.CurrentHp += 50; // 체력 50 회복
+    }
+
+    public void flames() // 불길
+    {
+        // 모든 적에게 화상 상태를 부여
+        IndentData burnData = indentData[(int)IndentData.EIndent.Burn];
+
+        if (burnData != null)
+        {
+            for (int i = 0; i < BattleManager.instance.enemyList.Count; i++)
+            {
+                Enemy target = BattleManager.instance.enemyList[i];
+                target.CharacterIndent.AddIndent(burnData, 1); // 예시로 1턴 동안 화상 적용
+                Debug.Log("Burn effect applied to: " + target.name);
+            }
+        }
+        else
+        {
+            Debug.LogError("Burn Indent Data is null!");
+        }
+
+        CardHolder.instance.DrawCard(); // 첫 번째 카드 드로우
+        CardHolder.instance.DrawCard(); // 두 번째 카드 드로우;
+
+        Debug.Log("Player drew 2 cards.");
+    }
+
+    public void bottle()  // 물병
+    {
+        // 체력 20 회복
+        Player.instance.PlayerState.CurrentHp += 20;
+        Debug.Log("Player's health restored by 20.");
+
+        // 카드 한 장 드로우
+        CardHolder.instance.DrawCard();
+        Debug.Log("Drew one card.");
+    }
+    public void fishingrod()  //낚시대
+    {
+        CardHolder.instance.DrawCard();
+        CardHolder.instance.DrawCard();
+        Debug.Log("Drew one card.");
+    }
+
+    public void woodenbox()  //나무상자
+    {
+        Player.instance.PlayerState.CurrentHp += 20;
+        Debug.Log("Player healed for 20 HP.");
+
+        CardHolder.instance.DrawCard();
+        Debug.Log("Drew one card.");
+    }
+
+    public void basket()  //나무상자
+    {
+        CardHolder.instance.DrawCard();
+        CardHolder.instance.DrawCard();
+        CardHolder.instance.DrawCard();
+        Debug.Log("Drew one card.");
+    }
+
+    public void swarmofrats()  //쥐 떼
+    {
+        // 맨 뒤의 적 선택
+        Enemy target = BattleManager.instance.TargetEnemy(CardAttackArea.Back);
+
+        if (target != null)
+        {
+            // 역병 상태 이상 데이터 가져오기
+            IndentData plagueData = indentData[(int)IndentData.EIndent.Plague];
+            if (plagueData != null)
+            {
+                // 두 번 역병 상태이상 적용
+                target.CharacterIndent.AddIndent(plagueData, 2); // 2턴적용
+                Debug.Log("Double Plague effect applied to: " + target.name);
+            }
+            else
+            {
+                Debug.LogError("Plague Indent Data is null!");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No target found at the back.");
+        }
+    }
+
+    public void leafblade()  //잎사귀 칼날
+    {
+        // 맨 뒤의 적 선택
+        Enemy target = BattleManager.instance.TargetEnemy(CardAttackArea.Forward);
+
+        if (target != null)
+        {
+            // 역병 상태 이상 데이터 가져오기
+            IndentData plagueData = indentData[(int)IndentData.EIndent.Plague];
+            if (plagueData != null)
+            {
+                // 두 번 역병 상태이상 적용
+                target.CharacterIndent.AddIndent(plagueData, 2); // 2턴적용
+                Debug.Log("Double Plague effect applied to: " + target.name);
+            }
+            else
+            {
+                Debug.LogError("Plague Indent Data is null!");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No target found at the back.");
+        }
+    }
+
+    public void seeds()  //씨앗
+    {
+        CardHolder.instance.DrawCard();
+        Debug.Log("Drew one card.");
+    }
+
+    public void fallenleaves() //낙엽
+    {
+        Player.instance.PlayerState.CurrentHp += 30; // 체력 50 회복
+    }
 }

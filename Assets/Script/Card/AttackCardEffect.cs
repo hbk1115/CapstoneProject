@@ -77,20 +77,13 @@ public class AttackCardEffect : MonoBehaviour
 
         if (target != null)
         {
-            // 적에게 피해를 25 주기
+            // 적에게 25 피해를 줍니다.
             target.Hit(25, Player.instance);
             Debug.Log($"{target.name}에게 25 피해를 주었습니다.");
 
-            // 적이 동상 상태일 경우 플레이어 체력 회복
-            if (target.CharacterIndent.HasIndent(IndentData.EIndent.Freeze))
-            {
-                Player.instance.PlayerState.CurrentHp += 20;
-                Debug.Log("적이 동상 상태이므로 플레이어가 20 체력을 회복했습니다.");
-            }
-            else
-            {
-                Debug.Log($"{target.name}은 동상 상태가 아닙니다.");
-            }
+            // 플레이어 체력 20 회복
+            Player.instance.PlayerState.CurrentHp += 20;
+            Debug.Log("플레이어가 20 체력을 회복했습니다.");
         }
         else
         {
@@ -176,6 +169,170 @@ public class AttackCardEffect : MonoBehaviour
         for (int i = BattleManager.instance.enemyList.Count - 1; i >= 0; i--)
         {
             BattleManager.instance.enemyList[i].Hit(7, Player.instance);
+        }
+    }
+
+    public void ignition() //점화
+    {
+        // 맨 앞의 적 선택
+        Enemy target = BattleManager.instance.TargetEnemy(CardAttackArea.Forward);
+
+        if (target != null)
+        {
+            // 화상 상태 이상 데이터 가져오기
+            IndentData burnData = indentData[(int)IndentData.EIndent.Burn];
+
+            if (burnData != null)
+            {
+                // 화상 상태 이상 부여
+                target.CharacterIndent.AddIndent(burnData, 1); // 예를 들어 1턴 동안 화상 적용
+                Debug.Log("Burn effect applied to: " + target.name);
+            }
+            else
+            {
+                Debug.LogError("Burn Indent Data is null!");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No target found for Torch!");
+        }
+    }
+
+    public void embers() //불씨
+    {
+        BattleManager.instance.TargetEnemy(CardAttackArea.Forward).Hit(6, Player.instance);
+    }
+
+    public void Flameblade() //불꽃 칼날
+    {
+        // 맨 앞의 적 선택
+        Enemy target = BattleManager.instance.TargetEnemy(CardAttackArea.Forward);
+
+        if (target != null)
+        {
+            // 적에게 8 피해를 줌
+            target.Hit(8, Player.instance);
+            Debug.Log($"{target.name}에게 8 피해를 주었습니다.");
+
+            // 화상 상태 이상 데이터 가져오기
+            IndentData burnData = indentData[(int)IndentData.EIndent.Burn];
+
+            if (burnData != null)
+            {
+                // 화상 상태 이상 부여
+                target.CharacterIndent.AddIndent(burnData, 1); // 예시로 1턴 동안 화상 적용
+                Debug.Log("Burn effect applied to: " + target.name);
+            }
+            else
+            {
+                Debug.LogError("Burn Indent Data is null!");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No target found for Torch!");
+        }
+    }
+
+    public void wateringcan() // 물뿌리개
+    {
+        BattleManager.instance.TargetEnemy(CardAttackArea.Forward).Hit(3, Player.instance);
+    }
+
+    public void shower() //소나기
+    {
+        BattleManager.instance.TargetEnemy(CardAttackArea.Random).Hit(7, Player.instance);
+    }
+
+    public void Iceblade() //얼음칼날
+    {
+        Enemy target = BattleManager.instance.TargetEnemy(CardAttackArea.Forward);
+
+        if (target != null)
+        {
+            // 맨 앞의 적에게 8의 피해를 줌
+            target.Hit(8, Player.instance);
+
+            // 동상 상태 이상 부여
+            IndentData freezeData = indentData[(int)IndentData.EIndent.Freeze];
+            if (freezeData != null)
+            {
+                target.CharacterIndent.AddIndent(freezeData, 1); // 예시로 1턴 동안 동상 적용
+                Debug.Log("Freeze effect applied to: " + target.name);
+            }
+            else
+            {
+                Debug.LogError("Freeze Indent Data is null!");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No target found for Frostbite!");
+        }
+    }
+
+    public void Icearrow() //얼음 화살
+    {
+        Enemy target = BattleManager.instance.TargetEnemy(CardAttackArea.Middle);
+
+        if (target != null)
+        {
+            // 중앙의 적에게 12의 피해를 줌
+            target.Hit(12, Player.instance);
+
+            // 동상 상태 이상 부여 (1턴 동안 지속)
+            IndentData freezeData = indentData[(int)IndentData.EIndent.Freeze];
+            if (freezeData != null)
+            {
+                target.CharacterIndent.AddIndent(freezeData, 1); // 1턴 동안 동상 적용
+                Debug.Log("Freeze effect applied to: " + target.name);
+            }
+            else
+            {
+                Debug.LogError("Freeze Indent Data is null!");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No target found for FrostImpact!");
+        }
+    }
+ 
+    public void hammer() //망치
+    {
+        BattleManager.instance.TargetEnemy(CardAttackArea.Middle).Hit(8, Player.instance);
+    }
+
+    public void saw() //톱
+    {
+        BattleManager.instance.TargetEnemy(CardAttackArea.Middle).Hit(20, Player.instance);
+    }
+    
+    public void thorn() //가시
+    {
+        // 모든 적에게 역병 상태 이상을 부여하고 10의 피해를 줌
+        foreach (var enemy in BattleManager.instance.enemyList)
+        {
+            if (enemy != null)
+            {
+                // 역병 상태 데이터 가져오기
+                IndentData plagueData = indentData[(int)IndentData.EIndent.Plague];
+                if (plagueData != null)
+                {
+                    // 1턴 동안 역병 적용
+                    enemy.CharacterIndent.AddIndent(plagueData, 1);
+                    Debug.Log("Plague effect applied to: " + enemy.name);
+                }
+                else
+                {
+                    Debug.LogError("Plague Indent Data is null!");
+                }
+
+                // 적에게 10의 피해를 줌
+                enemy.Hit(10, Player.instance);
+                Debug.Log($"{enemy.name}에게 10의 피해를 주었습니다.");
+            }
         }
     }
 }
