@@ -17584,7 +17584,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bb05194c0ab6d5f46a42d593c33413c2, type: 2}
   - {fileID: 11400000, guid: fb33f69337b3031448dcea0941124969, type: 2}
   - {fileID: 11400000, guid: 75a88a385dfb27b4ba450c8b6fe9db6c, type: 2}
-<<<<<<< Updated upstream
   - {fileID: 11400000, guid: d548f240ca4ac4349b26f481d04c0cb1, type: 2}
   - {fileID: 11400000, guid: 5ba81015b9336ae4b89803aabc752663, type: 2}
   - {fileID: 11400000, guid: a786c40d7af8f034cb293e96f79ef677, type: 2}
@@ -17605,26 +17604,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2fd83dbbff149224f8ea5c842fe8a7cc, type: 2}
   - {fileID: 11400000, guid: c3bcd88563d7fc54d9e52ae52d4d5be2, type: 2}
   - {fileID: 11400000, guid: 18bd0615484b6f8408f4494387922eb8, type: 2}
-=======
-  attackTypeSprite:
-  - {fileID: 1493611678, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
-  - {fileID: -578254259, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
-  - {fileID: 2004805394, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
-  elementTypeSprite:
-  - {fileID: 132191240, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
-  - {fileID: -1865600386, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
-  - {fileID: 1785391561, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
-  - {fileID: 236657481, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
-  attackAreaTypeSprite:
-  - {fileID: -263764212, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
-  - {fileID: -207385942, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
-  - {fileID: -392732219, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
-  - {fileID: -1319121750, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
-  - {fileID: 110051443, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
-  - {fileID: 1170008238, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
-  - {fileID: 1383932363, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
-  - {fileID: 445681466, guid: 21cb4a764a9386a44afc6f04ca9da173, type: 3}
->>>>>>> Stashed changes
 --- !u!4 &1847296936
 Transform:
   m_ObjectHideFlags: 0
