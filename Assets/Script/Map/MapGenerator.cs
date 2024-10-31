@@ -80,11 +80,21 @@ public class MapGenerator : MonoBehaviour
             }
             else
             {
-                if (mapList[i] == endMapList[0])
+                if (mapList[i] == endMapList[0]) // 첫 번째 끝 방인 경우
                 {
-                    newMapIcon.GetComponent<Image>().sprite = shopMapIcon;
+                    newMapIcon.GetComponent<Image>().sprite = shopMapIcon; // 상점 아이콘으로 설정
+                    newMapIcon.GetComponent<Button>().onClick.RemoveAllListeners(); // 버튼 클릭 이벤트 초기화
+                    newMapIcon.GetComponent<Button>().onClick.AddListener(() => // 클릭 시 실행할 동작 등록
+                    {
+                        newMapIcon.GetComponent<Button>().enabled = false; // 버튼 비활성화
+                        newMapIcon.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1f); // 색 변경
+                        MerchantRoomUI.instance.EnterMerchantRoom(); // 상점 표시 함수 호출
+                        OpenMap(newMapIcon); // 맵 열기
+                        UIManager.instance.SetMapUI(false); // 맵 UI 닫기
+                    });
                 }
-                else if(mapList[i] == endMapList[1])
+
+                else if (mapList[i] == endMapList[1])
                 {
                     newMapIcon.GetComponent<Image>().sprite = treasureMapIcon;
                     newMapIcon.GetComponent<Button>().onClick.RemoveAllListeners();
