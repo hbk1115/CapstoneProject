@@ -17,7 +17,7 @@ MonoBehaviour:
   cardType: 2
   cardAttackArea: 4
   cost: 5
-  cardImage: {fileID: -1971589375, guid: 9e702445110e7a04c8c767a63f78fb86, type: 3}
+  cardImage: {fileID: -2062370979, guid: 3c433e57eddd01742a410d85dcf71c99, type: 3}
   cardDescription: "\uBAA8\uB4E0\uC801\uC5D0\uAC8C \uD654\uC0C1\uC0C1\uD0DC\uB97C
     \uBD80\uC5EC\uD558\uACE0 \uCE74\uB4DC\uB97C 2\uC7A5 \uB4DC\uB85C\uC6B0\uD569\uB2C8\uB2E4."
   cardElement: 2

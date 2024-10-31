@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3363043ed4f724b8ae825179fd8342, type: 3}
   m_Name: Card_ 10
   m_EditorClassIdentifier: 
-  id: 1
+  id: 4
   cardName: "\uC5BC\uC74C \uD68C\uC624\uB9AC"
   cardType: 0
   cardAttackArea: 4
   cost: 7
-  cardImage: {fileID: -1901390410, guid: 9e702445110e7a04c8c767a63f78fb86, type: 3}
+  cardImage: {fileID: -539576032, guid: 3c433e57eddd01742a410d85dcf71c99, type: 3}
   cardDescription: "\uBAA8\uB4E0 \uC801\uC5D0\uAC8C \uD53C\uD574\uB97C 14 \uC90D\uB2C8\uB2E4.
     \uCCB4\uB825\uC744 5\uD68C\uBCF5\uD569\uB2C8\uB2E4"
   cardElement: 1
-  attackPower: 10
+  attackPower: 14
   useEffect:
   - m_PersistentCalls:
       m_Calls:

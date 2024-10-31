@@ -26,7 +26,9 @@ public enum CardAttackArea
     All,
     MostHealth,
     LeastHealth,
-    None
+    None,
+    Player,
+    Player_All
 }
 
 [CreateAssetMenu()]

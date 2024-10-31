@@ -92,6 +92,7 @@ public class BaseCard : MonoBehaviour
     {
         if(Player.instance.PlayerState.CurrentOrb >= cardData.cost)
         {
+
             Player.instance.PlayerState.CurrentOrb -= cardData.cost;
             cardData.useEffect.ForEach(useEffect => useEffect?.Invoke());
             CardHolder.instance.DiscardCard(this);
