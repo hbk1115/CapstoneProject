@@ -117,7 +117,7 @@ public class RoomManager : MonoBehaviour
     // 보물 방에 들어갈 때
     private void OnEnterTreasureRoom()
     {
-
+        
     }
 
     // 보스 방에 들어갈 때
