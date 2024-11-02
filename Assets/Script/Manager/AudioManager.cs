@@ -28,10 +28,13 @@ public class AudioManager : MonoBehaviour
         fire_hit,
         ice_hit,
         plague_hit,
+        normal_hit,
         fire_indent,
         ice_indent,
         plague_indent,
-        open_door
+        open_door,
+        heal_1,
+        heal_2
     }
 
     private void Awake()

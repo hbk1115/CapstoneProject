@@ -64,6 +64,7 @@ public class BaseCardGainState : BaseCardState
 
     public override void OnPointerClick(PointerEventData eventData)
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.select_button);
         _baseCard.onClickAction?.Invoke();
         Player.instance.AddCard(_baseCard);
         UIManager.instance.CardInfo.SetActive(false);

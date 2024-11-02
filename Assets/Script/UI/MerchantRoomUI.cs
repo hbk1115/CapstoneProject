@@ -67,6 +67,7 @@ public class MerchantRoomUI : MonoBehaviour
 
     public void CloseMerchantUI()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.select_button);
         //그냥 간단하게 여기에 직접 넣어도 됩니다
         merchandiseScreen.gameObject.SetActive(false);
         UIManager.instance.UI_Map.gameObject.SetActive(true);

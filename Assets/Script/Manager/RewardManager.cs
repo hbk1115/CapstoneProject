@@ -80,6 +80,7 @@ public class RewardManager : MonoBehaviour
         cardReward.Init("덱에 카드를 추가", cardRewardImage);
         cardRewardButton.onClick.AddListener(() => cardRewardGameObject.gameObject.SetActive(true));
         cardRewardButton.onClick.AddListener(() => rewardScreen.gameObject.SetActive(false));
+        cardRewardButton.onClick.AddListener(() => AudioManager.instance.PlaySfx(AudioManager.Sfx.get_coin));
 
         // 포션 만들꺼면 포션도
     }
@@ -117,7 +118,7 @@ public class RewardManager : MonoBehaviour
         // 카드를 얻고
         // 카드 보상 창을 닫고
         // 카드 보상을 없애고
-
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.select_button);
         cardRewardGameObject.gameObject.SetActive(false);
         rewardScreen.gameObject.SetActive(true);
         Destroy(cardReward.gameObject);
@@ -125,6 +126,7 @@ public class RewardManager : MonoBehaviour
 
     private void GetMoney(int value)
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.get_coin);
         Player.instance.PlayerState.Money += value;
     }
 }

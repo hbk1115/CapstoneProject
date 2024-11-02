@@ -121,7 +121,7 @@ public class AttackCardEffect : MonoBehaviour
         for (int i = BattleManager.instance.enemyList.Count - 1; i >= 0; i--)
         {
             BattleManager.instance.enemyList[i].Hit(14, Player.instance);
-            Debug.Log($"{BattleManager.instance.enemyList[i].name}에게 14 피해를 주었습니다.");
+            //Debug.Log($"{BattleManager.instance.enemyList[i].name}에게 14 피해를 주었습니다.");
         }
 
         // 플레이어 체력 회복
@@ -312,17 +312,17 @@ public class AttackCardEffect : MonoBehaviour
     public void thorn() //가시
     {
         // 모든 적에게 역병 상태 이상을 부여하고 10의 피해를 줌
-        foreach (var enemy in BattleManager.instance.enemyList)
+        for (int i = BattleManager.instance.enemyList.Count - 1; i >= 0; i--)
         {
-            if (enemy != null)
+            if (BattleManager.instance.enemyList[i] != null)
             {
                 // 역병 상태 데이터 가져오기
                 IndentData plagueData = indentData[(int)IndentData.EIndent.Plague];
                 if (plagueData != null)
                 {
                     // 1턴 동안 역병 적용
-                    enemy.CharacterIndent.AddIndent(plagueData, 1);
-                    Debug.Log("Plague effect applied to: " + enemy.name);
+                    BattleManager.instance.enemyList[i].CharacterIndent.AddIndent(plagueData, 1);
+                    Debug.Log("Plague effect applied to: " + BattleManager.instance.enemyList[i].name);
                 }
                 else
                 {
@@ -330,8 +330,7 @@ public class AttackCardEffect : MonoBehaviour
                 }
 
                 // 적에게 10의 피해를 줌
-                enemy.Hit(10, Player.instance);
-                Debug.Log($"{enemy.name}에게 10의 피해를 주었습니다.");
+                BattleManager.instance.enemyList[i].Hit(10, Player.instance);
             }
         }
     }

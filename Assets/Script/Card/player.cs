@@ -95,7 +95,10 @@ public class Player : Character
 
     public override void Dead()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
+        this.gameObject.SetActive(false);
+        UIManager.instance.OpenGameOverWindow();
+
     }
 
     public override void Hit(int damage, Character attacker)
@@ -107,6 +110,7 @@ public class Player : Character
             Debug.Log("Plague effect applied, damage increased to " + damage);
         }
 
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.player_hit);
         PlayerState.Hit(damage); // 플레이어의 체력 감소 처리
         Debug.Log($"{name} was hit with {damage} damage.");
     }

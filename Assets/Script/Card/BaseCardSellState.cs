@@ -68,6 +68,7 @@ public class BaseCardSellState : BaseCardState
         _baseCard.onClickAction?.Invoke();
         if (Player.instance.PlayerState.Money > 50)
         {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.buy_item);
             Player.instance.PlayerState.Money -= 50; // 플레이어에게 돈 차감
             Player.instance.AddCard(_baseCard);
             UIManager.instance.CardInfo.SetActive(false);

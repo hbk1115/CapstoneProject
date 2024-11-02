@@ -8,7 +8,17 @@ public class RoomManager : MonoBehaviour
     static public RoomManager instance;
     [Header("Battle")]
     [SerializeField]
-    private List<BattleData> firstAct1BattleData;
+    private List<BattleData> BattleData_Stage_1;
+    [SerializeField]
+    private List<BattleData> BattleData_Stage_2;
+    [SerializeField]
+    private List<BattleData> BattleData_Stage_3;
+    [SerializeField]
+    private List<BattleData> BattleData_Boss_Stage_1;
+    [SerializeField]
+    private List<BattleData> BattleData_Boss_Stage_2;
+    [SerializeField]
+    private List<BattleData> BattleData_Boss_Stage_3;
 
     private bool _isEarly = true;
     private bool isBossGoable = false;
@@ -29,7 +39,13 @@ public class RoomManager : MonoBehaviour
         battle2Index = 0;
         unknownIndex = 0;
 
-        firstAct1BattleData.ShuffleList();
+        BattleData_Stage_1.ShuffleList();
+        BattleData_Stage_2.ShuffleList();
+        BattleData_Stage_3.ShuffleList();
+
+        BattleData_Boss_Stage_1.ShuffleList();
+        BattleData_Boss_Stage_2.ShuffleList();
+        BattleData_Boss_Stage_3.ShuffleList();
     }
 
     public void EnterRoom(ERoomType roomType)
@@ -43,7 +59,7 @@ public class RoomManager : MonoBehaviour
             case ERoomType.Enemy:
                 //battleManager.Player.gameObject.SetActive(true);
                 //battleManager.Player.PlayerStat.IsBattle(true);
-                OnEnterEnemyRoom();
+                StartCoroutine(OnEnterEnemyRoom());
                 break;
             case ERoomType.Merchant:
 
@@ -65,22 +81,25 @@ public class RoomManager : MonoBehaviour
     }
 
     // 일반 적 방에 들어갈 때
-    private void OnEnterEnemyRoom()
+    private IEnumerator OnEnterEnemyRoom()
     {
         // 초반에 쉬운 적
         if (_isEarly)
         {
-            BattleManager.instance.StartBattle(firstAct1BattleData[battle1Index]);
+            yield return UIManager.instance.OpenDoor();
+            BattleManager.instance.StartBattle(BattleData_Stage_1[battle1Index]);
             battle1Index++;
-            if (battle1Index == firstAct1BattleData.Count)
+            if (battle1Index == BattleData_Stage_1.Count)
                 battle1Index = 0;
+
+            yield return UIManager.instance.CloseDoor();
         }
     }
 
     // 엘리트 방에 들어갈 때
     private void OnEnterEliteRoom()
     {
-
+        BattleManager.instance.StartBattle(BattleData_Boss_Stage_1[0]);
     }
 
     // 상인 방에 들어갈 때

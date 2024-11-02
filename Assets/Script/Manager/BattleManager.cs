@@ -148,6 +148,7 @@ public class BattleManager : MonoBehaviour
 
     public void EndTurn()//턴 종료 버튼 누르면 실행(카드 선택 금지, 적 공격 실행, 코스트 회복, 카드 드로우)
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.select_button);
         playerTurn = false;
         myTurn = false;
         //카드 선택 안되게 변경

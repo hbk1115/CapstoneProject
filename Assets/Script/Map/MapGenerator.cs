@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -55,6 +56,22 @@ public class MapGenerator : MonoBehaviour
         mapList.Add(startPos);
         RandomMapGenerator();
     }
+
+    public void CreateMap(int num)//스테이지 받음(1,2,3)
+    {
+        for(int i = 0; i < mapIconTrans.transform.childCount; i++)
+        {
+            Destroy(mapIconTrans.transform.GetChild(i).gameObject);//먼저 모든 맵 오브젝트 파괴
+        }
+        maxMapSize = 7;
+        mapLength = 8 + (num * 2);
+        endRoomNum = 3;
+        startPos = ((maxMapSize / 2) * 10) + ((maxMapSize / 2) + 1);//아마 34임
+        Debug.Log("startPos : " + startPos);
+        nextPosNum = startPos;
+        mapList.Add(startPos);
+        RandomMapGenerator();
+    }
     private void AddMap()
     {
         for(int i = 0; i < mapList.Count; i++)
@@ -77,11 +94,14 @@ public class MapGenerator : MonoBehaviour
             if (mapList[i] == startPos)
             {
                 newMapIcon.GetComponent<Image>().sprite = startMapIcon;
+                OpenMap(newMapIcon);
+                Debug.Log(startPos + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             }
             else
             {
                 if (mapList[i] == endMapList[0]) // 첫 번째 끝 방인 경우
                 {
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.select_button);
                     newMapIcon.GetComponent<Image>().sprite = shopMapIcon; // 상점 아이콘으로 설정
                     newMapIcon.GetComponent<Button>().onClick.RemoveAllListeners(); // 버튼 클릭 이벤트 초기화
                     newMapIcon.GetComponent<Button>().onClick.AddListener(() => // 클릭 시 실행할 동작 등록
@@ -93,9 +113,9 @@ public class MapGenerator : MonoBehaviour
                         UIManager.instance.SetMapUI(false); // 맵 UI 닫기
                     });
                 }
-
                 else if (mapList[i] == endMapList[1])
                 {
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.select_button);
                     newMapIcon.GetComponent<Image>().sprite = treasureMapIcon;
                     newMapIcon.GetComponent<Button>().onClick.RemoveAllListeners();
                     newMapIcon.GetComponent<Button>().onClick.AddListener(() =>
@@ -105,12 +125,22 @@ public class MapGenerator : MonoBehaviour
                         RewardManager.instance.ShowReward();
                         OpenMap(newMapIcon);
                         UIManager.instance.SetMapUI(false);//맵 닫기
-
                     });
                 }
                 else if (mapList[i] == endMapList[2])
                 {
                     newMapIcon.GetComponent<Image>().sprite = bossMapIcon;
+                    newMapIcon.GetComponent<Button>().onClick.RemoveAllListeners();
+                    newMapIcon.GetComponent<Button>().onClick.AddListener(() =>
+                    {
+                        AudioManager.instance.PlaySfx(AudioManager.Sfx.select_button);
+                        newMapIcon.GetComponent<Button>().enabled = false;
+                        newMapIcon.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
+                        RoomManager.instance.EnterRoom(ERoomType.Elite);
+                        OpenMap(newMapIcon);
+                        UIManager.instance.SetMapUI(false);
+                        CreateMap(2);//보스방 들어가면서 맵 만들기 시작 >> 일단 만들어 둬야 함. 오래 걸릴수 있기 때문
+                    });
                 }
                 else
                 {
@@ -118,10 +148,10 @@ public class MapGenerator : MonoBehaviour
                     newMapIcon.GetComponent<Button>().onClick.RemoveAllListeners();
                     newMapIcon.GetComponent<Button>().onClick.AddListener(() =>
                     {
+                        AudioManager.instance.PlaySfx(AudioManager.Sfx.select_button);
                         newMapIcon.GetComponent<Button>().enabled = false;
                         newMapIcon.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
                         RoomManager.instance.EnterRoom(ERoomType.Enemy);
-                        Debug.Log("asd" + newMapIcon);
                         OpenMap(newMapIcon);
                         UIManager.instance.SetMapUI(false);//맵 닫기
                         
@@ -142,6 +172,7 @@ public class MapGenerator : MonoBehaviour
             mapList.Clear();
             endMapList.Clear();
             mapList.Add(startPos);
+            mapImageObject.Clear();
 
             RandomMapCreate();
         } while (!CheckEndRoom());//true면 endRoom이 정해진 개수 만큼 나옴

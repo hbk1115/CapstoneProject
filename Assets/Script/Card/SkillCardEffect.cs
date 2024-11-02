@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class SkillCardEffect : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class SkillCardEffect : MonoBehaviour
 
     public void Matches() // 성냥
     {
-        Player.instance.PlayerState.CurrentHp += 20; // 체력 20 회복
+        Player.instance.PlayerState.CurrentHp += 3; // 체력 20 회복
         CardHolder.instance.DrawCard();
     }
 
@@ -49,15 +50,13 @@ public class SkillCardEffect : MonoBehaviour
     public void Scarecrow() // 허수아비
     {
         // 모든 적에게 피해를 10 줌
-        foreach (Enemy enemy in BattleManager.instance.enemyList)
+        for (int i = BattleManager.instance.enemyList.Count - 1; i >= 0; i--)
         {
-            enemy.Hit(15, Player.instance);
-            Debug.Log($"Dealt 10 damage to: {enemy.name}");
+            BattleManager.instance.enemyList[i].Hit(15, Player.instance);
         }
 
         // 플레이어 체력 회복
         Player.instance.PlayerState.CurrentHp += 20;
-        Debug.Log("Player HP healed by 10.");
     }
 
     public void Blightseed() // 역병씨앗
@@ -72,7 +71,6 @@ public class SkillCardEffect : MonoBehaviour
             {
                 // 역병 상태 이상 부여
                 target.CharacterIndent.AddIndent(plagueData, 1); // 예를 들어 1턴 동안 역병 적용
-                Debug.Log("Plague effect applied to: " + target.name);
             }
             else
             {
@@ -103,7 +101,6 @@ public class SkillCardEffect : MonoBehaviour
             {
                 // 중앙의 적에게 역병 상태 이상 적용
                 target.CharacterIndent.AddIndent(plagueData, 1); // 1턴 동안 역병 적용
-                Debug.Log("Plague effect applied to: " + target.name);
             }
             else
             {
@@ -128,7 +125,6 @@ public class SkillCardEffect : MonoBehaviour
             if (plagueData != null)
             {
                 target.CharacterIndent.AddIndent(plagueData, 3); // 3턴 동안 역병 적용
-                Debug.Log("Plague effect applied to: " + target.name);
             }
             else
             {
@@ -148,15 +144,14 @@ public class SkillCardEffect : MonoBehaviour
     public void Outbreak() // 창궐
     {
         // 모든 적에게 역병 상태 이상 부여
-        foreach (var enemy in BattleManager.instance.enemyList)
+        for (int i = BattleManager.instance.enemyList.Count - 1; i >= 0; i--)
         {
-            if (enemy != null)
+            if (BattleManager.instance.enemyList[i] != null)
             {
                 IndentData plagueData = indentData[(int)IndentData.EIndent.Plague];
                 if (plagueData != null)
                 {
-                    enemy.CharacterIndent.AddIndent(plagueData, 2); // 2턴 동안 역병 적용
-                    Debug.Log("Plague effect applied to: " + enemy.name);
+                    BattleManager.instance.enemyList[i].CharacterIndent.AddIndent(plagueData, 2); // 2턴 동안 역병 적용
                 }
                 else
                 {
@@ -175,15 +170,14 @@ public class SkillCardEffect : MonoBehaviour
     public void ToxicSpores() // 독성 포자
     {
         // 모든 적에게 역병 상태 이상 부여
-        foreach (var enemy in BattleManager.instance.enemyList)
+        for (int i = BattleManager.instance.enemyList.Count - 1; i >= 0; i--)
         {
-            if (enemy != null)
+            if (BattleManager.instance.enemyList[i] != null)
             {
                 IndentData plagueData = indentData[(int)IndentData.EIndent.Plague];
                 if (plagueData != null)
                 {
-                    enemy.CharacterIndent.AddIndent(plagueData, 1); // 1턴 동안 역병 적용
-                    Debug.Log("Plague effect applied to: " + enemy.name);
+                    BattleManager.instance.enemyList[i].CharacterIndent.AddIndent(plagueData, 1); // 1턴 동안 역병 적용
                 }
                 else
                 {
@@ -208,11 +202,10 @@ public class SkillCardEffect : MonoBehaviour
 
         if (burnData != null)
         {
-            for (int i = 0; i < BattleManager.instance.enemyList.Count; i++)
+            for (int i = BattleManager.instance.enemyList.Count - 1; i >= 0; i--)
             {
                 Enemy target = BattleManager.instance.enemyList[i];
                 target.CharacterIndent.AddIndent(burnData, 1); // 예시로 1턴 동안 화상 적용
-                Debug.Log("Burn effect applied to: " + target.name);
             }
         }
         else
@@ -230,26 +223,46 @@ public class SkillCardEffect : MonoBehaviour
     {
         // 체력 20 회복
         Player.instance.PlayerState.CurrentHp += 20;
-        Debug.Log("Player's health restored by 20.");
 
         // 카드 한 장 드로우
         CardHolder.instance.DrawCard();
-        Debug.Log("Drew one card.");
     }
     public void fishingrod()  //낚시대
     {
-        CardHolder.instance.DrawCard();
-        CardHolder.instance.DrawCard();
-        Debug.Log("Drew one card.");
+        BattleManager.instance.TargetEnemy(CardAttackArea.Middle).Hit(6, Player.instance);
+
+        // 앞쪽의 적을 타겟으로 설정
+        Enemy target = BattleManager.instance.TargetEnemy(CardAttackArea.Middle);
+
+        if (target != null)
+        {
+            Debug.Log("타겟이 선택되었습니다: " + target.name);
+
+            // 동상 상태 이상 데이터 가져오기
+            IndentData freezeData = indentData[(int)IndentData.EIndent.Freeze];
+
+            if (freezeData != null)
+            {
+                // 앞쪽의 적에게 동상 상태 이상 적용
+                target.CharacterIndent.AddIndent(freezeData, 1); // 예를 들어 1턴 동안 동상 적용
+                Debug.Log("Freeze effect applied to: " + target.name);
+            }
+            else
+            {
+                Debug.LogError("Freeze Indent Data is null!");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No target found for Ice!");
+        }
     }
 
     public void woodenbox()  //나무상자
     {
         Player.instance.PlayerState.CurrentHp += 20;
-        Debug.Log("Player healed for 20 HP.");
 
         CardHolder.instance.DrawCard();
-        Debug.Log("Drew one card.");
     }
 
     public void basket()  //나무상자
@@ -257,7 +270,6 @@ public class SkillCardEffect : MonoBehaviour
         CardHolder.instance.DrawCard();
         CardHolder.instance.DrawCard();
         CardHolder.instance.DrawCard();
-        Debug.Log("Drew one card.");
     }
 
     public void swarmofrats()  //쥐 떼
@@ -273,7 +285,6 @@ public class SkillCardEffect : MonoBehaviour
             {
                 // 두 번 역병 상태이상 적용
                 target.CharacterIndent.AddIndent(plagueData, 2); // 2턴적용
-                Debug.Log("Double Plague effect applied to: " + target.name);
             }
             else
             {
@@ -299,7 +310,6 @@ public class SkillCardEffect : MonoBehaviour
             {
                 // 두 번 역병 상태이상 적용
                 target.CharacterIndent.AddIndent(plagueData, 2); // 2턴적용
-                Debug.Log("Double Plague effect applied to: " + target.name);
             }
             else
             {
@@ -315,7 +325,6 @@ public class SkillCardEffect : MonoBehaviour
     public void seeds()  //씨앗
     {
         CardHolder.instance.DrawCard();
-        Debug.Log("Drew one card.");
     }
 
     public void fallenleaves() //낙엽

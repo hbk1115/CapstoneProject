@@ -20,13 +20,16 @@ public class GameManager : MonoBehaviour
        // cardGenerator.AllCardList.Add(warriorCard);
 
         Player.instance.CardGenerator = cardGenerator;
-        Player.instance.GenerateCard("불길");
-        Player.instance.GenerateCard("파도");
-        Player.instance.GenerateRandomCard();
-        Player.instance.GenerateRandomCard();
-        Player.instance.GenerateRandomCard();
-        Player.instance.GenerateRandomCard();
-        Player.instance.GenerateRandomCard();
+        Player.instance.GenerateCard("호미");
+        Player.instance.GenerateCard("호미");
+        Player.instance.GenerateCard("호미");
+        Player.instance.GenerateCard("호미");
+        Player.instance.GenerateCard("호미");
+        Player.instance.GenerateCard("호미");
+        Player.instance.GenerateCard("호미");
+        Player.instance.GenerateCard("호미");
+        Player.instance.GenerateCard("성냥");
+        Player.instance.GenerateCard("성냥");
 
         //CardHolder.instance.StartBattle(Player.instance.PlayerDeck);
 

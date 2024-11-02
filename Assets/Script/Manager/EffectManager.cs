@@ -27,58 +27,83 @@ public class EffectManager : MonoBehaviour
             case CardElement.Fire:
                 if (cardData.cardType == CardType.Attack)
                 {
-                    return fire_Hit;
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.fire_hit);
+                    GameObject newEffect = Instantiate(fire_Indent);
+                    return newEffect;
                 }
-                else if (cardData.cardType == CardType.Defense)
+                else if (cardData.cardType == CardType.Resource)
                 {
-                    return fire_Indent;
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.fire_indent);
+                    GameObject newEffect = Instantiate(fire_Indent);
+                    return newEffect;
                 }
                 else
                 {
-                    return heal_1;
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.heal_1);
+                    GameObject newEffect = Instantiate(heal_1);
+                    return newEffect;
                 }
             case CardElement.Water:
                 if (cardData.cardType == CardType.Attack)
                 {
-                    return water_Hit;
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.ice_hit);
+                    GameObject newEffect = Instantiate(water_Hit);
+                    return newEffect;
                 }
-                else if (cardData.cardType == CardType.Defense)
+                else if (cardData.cardType == CardType.Resource)
                 {
-                    return water_Indent;
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.ice_indent);
+                    GameObject newEffect = Instantiate(water_Indent);
+                    return newEffect;
                 }
                 else
                 {
-                    return heal_1;
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.heal_1);
+                    GameObject newEffect = Instantiate(heal_1);
+                    return newEffect;
                 }
             case CardElement.Grass:
                 if (cardData.cardType == CardType.Attack)
                 {
-                    return grass_Hit;
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.plague_hit);
+                    GameObject newEffect = Instantiate(grass_Hit);
+                    return newEffect;
                 }
-                else if (cardData.cardType == CardType.Defense)
+                else if (cardData.cardType == CardType.Resource)
                 {
-                    return grass_Indent;
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.plague_indent);
+                    GameObject newEffect = Instantiate(grass_Indent);
+                    return newEffect;
                 }
                 else
                 {
-                    return heal_1;
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.heal_1);
+                    GameObject newEffect = Instantiate(heal_1);
+                    return newEffect;
                 }
             case CardElement.Common:
                 if (cardData.cardType == CardType.Attack)
                 {
-                    return normal_Hit;
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.normal_hit);
+                    GameObject newEffect = Instantiate(normal_Hit);
+                    return newEffect;
                 }
                 else if (cardData.cardType == CardType.Defense)
                 {
-                    return heal_2;
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.heal_2);
+                    GameObject newEffect = Instantiate(heal_2);
+                    return newEffect;
                 }
                 else
                 {
-                    return heal_1;
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.heal_1);
+                    GameObject newEffect = Instantiate(heal_1);
+                    return newEffect;
                 }
             default :
                 {
-                    return normal_Hit;
+                    GameObject newEffect = Instantiate(heal_1);
+                    return newEffect;
                 }
         }
     }

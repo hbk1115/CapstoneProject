@@ -92,10 +92,13 @@ public class BaseCard : MonoBehaviour
     {
         if(Player.instance.PlayerState.CurrentOrb >= cardData.cost)
         {
+            SpawnEffect();
+            //AudioManager.instance.PlaySfx(AudioManager.Sfx.select_card);
 
             Player.instance.PlayerState.CurrentOrb -= cardData.cost;
             cardData.useEffect.ForEach(useEffect => useEffect?.Invoke());
             CardHolder.instance.DiscardCard(this);
+
             //Destroy(gameObject);
         }
     }
@@ -109,5 +112,27 @@ public class BaseCard : MonoBehaviour
     public void CardDisappear()
     {
         this.transform.localScale = Vector3.zero;
+    }
+
+    public void SpawnEffect()
+    {
+        if(cardData.cardAttackArea == CardAttackArea.All)
+        {
+            for(int i = BattleManager.instance.enemyList.Count - 1; i >= 0; i--)
+            {
+                GameObject newEffect = EffectManager.instance.GetEffect(cardData);
+                newEffect.transform.position = BattleManager.instance.enemyList[i].transform.position;
+            }
+        }
+        else if(cardData.cardAttackArea == CardAttackArea.Player)
+        {
+            GameObject newEffect = EffectManager.instance.GetEffect(cardData);
+            newEffect.transform.position = Player.instance.transform.position;
+        }
+        else
+        {
+            GameObject newEffect = EffectManager.instance.GetEffect(cardData);
+            newEffect.transform.position = BattleManager.instance.TargetEnemy(cardData.cardAttackArea).transform.position;
+        }
     }
 }

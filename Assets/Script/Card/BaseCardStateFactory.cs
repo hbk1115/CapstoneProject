@@ -53,7 +53,6 @@ public class BaseCardStateFactory
             return null;
         }
 
-        Debug.Log(_dicState[cardState]);
         return _dicState[cardState];
     }
 }

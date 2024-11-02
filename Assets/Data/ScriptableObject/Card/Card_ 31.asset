@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3363043ed4f724b8ae825179fd8342, type: 3}
   m_Name: Card_ 31
   m_EditorClassIdentifier: 
-  id: 3
+  id: 5
   cardName: "\uB09A\uC2DC\uB300 "
-  cardType: 2
-  cardAttackArea: 7
+  cardType: 0
+  cardAttackArea: 1
   cost: 2
   cardImage: {fileID: 1297328161, guid: 3c433e57eddd01742a410d85dcf71c99, type: 3}
   cardDescription: "\uC911\uC559\uC758 \uC801\uC5D0\uAC8C \uD53C\uD574\uB97C 12 \uC8FC\uACE0,
