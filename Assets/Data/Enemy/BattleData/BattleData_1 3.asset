@@ -13,13 +13,11 @@ MonoBehaviour:
   m_Name: BattleData_1 3
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 2631937048765714452, guid: 690902ea3592b1340bb44aca6714dd61, type: 3}
-  - {fileID: 2631937048765714452, guid: 690902ea3592b1340bb44aca6714dd61, type: 3}
-  - {fileID: 2631937048765714452, guid: 690902ea3592b1340bb44aca6714dd61, type: 3}
+  - {fileID: 7394523572902345042, guid: 08a203cc9c86218449de0e7180e1f40b, type: 3}
+  - {fileID: 5527216827940294536, guid: d8c733701da6ae1489dd42c087be7250, type: 3}
   spawnPos:
-  - {x: -1, y: 2, z: 0}
-  - {x: 0, y: 2, z: 0}
-  - {x: 1, y: 2, z: 0}
+  - {x: -0.5, y: 2, z: 0}
+  - {x: 0.5, y: 2, z: 0}
   maxMoney: 30
   minMoney: 20
   isRelics: 0

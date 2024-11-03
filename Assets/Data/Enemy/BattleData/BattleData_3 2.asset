@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 646c92a397b653d43b0edec724fdb833, type: 3}
-  m_Name: Boss_Battle
+  m_Name: BattleData_3 2
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 2631937048765714452, guid: d01ac9164580ccb4d9c3664e792420ab, type: 3}
+  - {fileID: 4461499823201446775, guid: a8f7cd7a6a1b039419c19ce7339f8bdb, type: 3}
+  - {fileID: 4461499823201446775, guid: 10797dfc68076b444a77e3ae966ca7f1, type: 3}
   spawnPos:
-  - {x: 0, y: 2, z: 0}
-  maxMoney: 100
-  minMoney: 70
+  - {x: -0.5, y: 2, z: 0}
+  - {x: 0.5, y: 2, z: 0}
+  maxMoney: 140
+  minMoney: 120
   isRelics: 0

@@ -66,7 +66,7 @@ public class BaseCardSellState : BaseCardState
     public override void OnPointerClick(PointerEventData eventData)
     {
         _baseCard.onClickAction?.Invoke();
-        if (Player.instance.PlayerState.Money > 50)
+        if (Player.instance.PlayerState.Money >= 50)
         {
             AudioManager.instance.PlaySfx(AudioManager.Sfx.buy_item);
             Player.instance.PlayerState.Money -= 50; // 플레이어에게 돈 차감
