@@ -19,7 +19,7 @@ public class BaseCardStateFactory
         //_dicState[ECardUsage.Check] = new BaseCardCheckState(_baseCard, this);
         _dicState[ECardUsage.Gain] = new BaseCardGainState(_baseCard, this);
         //_dicState[ECardUsage.Enforce] = new BaseCardEnforceState(_baseCard, this);
-        //_dicState[ECardUsage.DisCard] = new BaseCardDiscardState(_baseCard, this);
+        _dicState[ECardUsage.DisCard] = new BaseCardDiscardState(_baseCard, this);
         _dicState[ECardUsage.Sell] = new BaseCardSellState(_baseCard, this);
 
         // 가장 처음은 배틀상태로 초기화

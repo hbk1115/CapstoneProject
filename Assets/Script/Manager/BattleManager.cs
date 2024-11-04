@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
@@ -18,8 +19,8 @@ public class BattleManager : MonoBehaviour
 {
     static public BattleManager instance;
 
+    public System.Action onStartMyTurn;     // 내 턴 시작 시 발생
     public System.Action onEndEnemyTurn;       // 내 턴 끝 시 발생
-
 
     private BattleData currentBattleData;
     public List<Enemy> enemyList;
@@ -31,9 +32,12 @@ public class BattleManager : MonoBehaviour
     public bool playerTurn = false;
     public bool myTurn;
 
+    public int stage;
+
     private void Awake()
     {
         instance = this;
+        stage = 1;
         _stateFactory = new(this);
     }
 
@@ -41,7 +45,15 @@ public class BattleManager : MonoBehaviour
     {
         List<Enemy> newEnemys = new List<Enemy>(enemyList);
 
-        newEnemys.OrderByDescending(enemy => enemy.CharacterStat.CurrentHp).First();
+        // 정렬된 리스트를 새롭게 생성
+        List<Enemy> sortedEnemys = newEnemys.OrderByDescending(enemy => enemy.CharacterStat.CurrentHp).ToList();
+
+        // 정렬된 리스트를 이용하여 출력
+        for (int i = 0; i < sortedEnemys.Count; i++)
+        {
+            Debug.Log(i + " 번째 몬스터 체력 : " + sortedEnemys[i].CharacterStat.CurrentHp);
+        }
+
         if (enemyList != null)
         {
             switch (cardAttackArea)
@@ -57,9 +69,9 @@ public class BattleManager : MonoBehaviour
                 case CardAttackArea.All:
                     return null;//전부 다 공격은 그냥 enemyList꺼내다 쓰면 됨
                 case CardAttackArea.MostHealth:
-                    return newEnemys[0];
+                    return sortedEnemys[0];
                 case CardAttackArea.LeastHealth:
-                    return newEnemys[newEnemys.Count - 1];
+                    return sortedEnemys[sortedEnemys.Count - 1];
                 case CardAttackArea.None:
                     return null;
             }
@@ -89,10 +101,30 @@ public class BattleManager : MonoBehaviour
 
         // 적 생성
         enemyList = new List<Enemy>();
-        for (int i = 0; i < battleData.Enemies.Count; i++)
+
+        if(battleData.Enemies.Count == 1)
         {
-            Enemy enemy = Object.Instantiate(battleData.Enemies[i], battleData.SpawnPos[i], Quaternion.identity, EnemyTrans.transform);
+            Enemy enemy = Object.Instantiate(battleData.Enemies[0], new Vector2(0, 2), Quaternion.identity, EnemyTrans.transform);
             enemyList.Add(enemy);
+        }
+        else if(battleData.Enemies.Count == 2)
+        {
+            Enemy enemy_1 = Object.Instantiate(battleData.Enemies[0], new Vector2(-0.65f, 2), Quaternion.identity, EnemyTrans.transform);
+            enemyList.Add(enemy_1);
+
+            Enemy enemy_2 = Object.Instantiate(battleData.Enemies[1], new Vector2(0.65f, 2), Quaternion.identity, EnemyTrans.transform);
+            enemyList.Add(enemy_2);
+        }
+        else
+        {
+            Enemy enemy_1 = Object.Instantiate(battleData.Enemies[0], new Vector2(-1.3f, 2), Quaternion.identity, EnemyTrans.transform);
+            enemyList.Add(enemy_1);
+
+            Enemy enemy_2 = Object.Instantiate(battleData.Enemies[1], new Vector2(0, 2), Quaternion.identity, EnemyTrans.transform);
+            enemyList.Add(enemy_2);
+
+            Enemy enemy_3 = Object.Instantiate(battleData.Enemies[2], new Vector2(1.3f, 2), Quaternion.identity, EnemyTrans.transform);
+            enemyList.Add(enemy_3);
         }
 
         _stateFactory.ChangeState(EBattleState.MyTurnStart);

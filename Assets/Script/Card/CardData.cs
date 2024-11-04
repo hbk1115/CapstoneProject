@@ -27,8 +27,7 @@ public enum CardAttackArea
     MostHealth,
     LeastHealth,
     None,
-    Player,
-    Player_All
+    Player
 }
 
 [CreateAssetMenu()]
@@ -45,6 +44,9 @@ public class CardData : ScriptableObject
 
     [Header("카드 수치")]
     public int attackPower;
+    public int defensePower;
+    public int resourcePower;
+    public int indentLength;
 
     [Header("사용효과")]
     public List<UnityEvent> useEffect;

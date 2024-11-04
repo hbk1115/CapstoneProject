@@ -8,4 +8,9 @@ public class DestroyObject : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+
+    public void DestoyThisOnParent()
+    {
+        Destroy(transform.parent.parent.gameObject);
+    }
 }

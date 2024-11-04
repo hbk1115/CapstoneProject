@@ -5,6 +5,7 @@ using System.Linq;
 using System.Xml;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -48,6 +49,8 @@ public class MapGenerator : MonoBehaviour
     }
     private void Init()
     {
+        CreateMap(BattleManager.instance.stage);
+        /*
         maxMapSize = 7;
         mapLength = 10;
         endRoomNum = 3;
@@ -55,6 +58,7 @@ public class MapGenerator : MonoBehaviour
         nextPosNum = startPos;
         mapList.Add(startPos);
         RandomMapGenerator();
+        */
     }
 
     public void CreateMap(int num)//스테이지 받음(1,2,3)
@@ -106,6 +110,7 @@ public class MapGenerator : MonoBehaviour
                     newMapIcon.GetComponent<Button>().onClick.RemoveAllListeners(); // 버튼 클릭 이벤트 초기화
                     newMapIcon.GetComponent<Button>().onClick.AddListener(() => // 클릭 시 실행할 동작 등록
                     {
+                        CardHolder.instance.StartBattle(Player.instance.PlayerDeck);
                         newMapIcon.GetComponent<Button>().enabled = false; // 버튼 비활성화
                         newMapIcon.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1f); // 색 변경
                         MerchantRoomUI.instance.EnterMerchantRoom(); // 상점 표시 함수 호출
@@ -120,6 +125,7 @@ public class MapGenerator : MonoBehaviour
                     newMapIcon.GetComponent<Button>().onClick.RemoveAllListeners();
                     newMapIcon.GetComponent<Button>().onClick.AddListener(() =>
                     {
+                        CardHolder.instance.StartBattle(Player.instance.PlayerDeck);
                         newMapIcon.GetComponent<Button>().enabled = false;
                         newMapIcon.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
                         RewardManager.instance.ShowReward();
@@ -136,10 +142,11 @@ public class MapGenerator : MonoBehaviour
                         AudioManager.instance.PlaySfx(AudioManager.Sfx.select_button);
                         newMapIcon.GetComponent<Button>().enabled = false;
                         newMapIcon.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
-                        RoomManager.instance.EnterRoom(ERoomType.Elite);
+                        RoomManager.instance.EnterRoom(ERoomType.Elite, BattleManager.instance.stage);
                         OpenMap(newMapIcon);
                         UIManager.instance.SetMapUI(false);
-                        CreateMap(2);//보스방 들어가면서 맵 만들기 시작 >> 일단 만들어 둬야 함. 오래 걸릴수 있기 때문
+                        BattleManager.instance.stage++;
+                        CreateMap(BattleManager.instance.stage);//보스방 들어가면서 맵 만들기 시작 >> 일단 만들어 둬야 함. 오래 걸릴수 있기 때문
                     });
                 }
                 else
@@ -151,7 +158,7 @@ public class MapGenerator : MonoBehaviour
                         AudioManager.instance.PlaySfx(AudioManager.Sfx.select_button);
                         newMapIcon.GetComponent<Button>().enabled = false;
                         newMapIcon.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
-                        RoomManager.instance.EnterRoom(ERoomType.Enemy);
+                        RoomManager.instance.EnterRoom(ERoomType.Enemy, BattleManager.instance.stage);
                         OpenMap(newMapIcon);
                         UIManager.instance.SetMapUI(false);//맵 닫기
                         

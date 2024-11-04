@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Enemy_Defense
   m_EditorClassIdentifier: 
   patternType: 1
-  patternIcon: {fileID: 0}
+  patternIcon: {fileID: 1945993534, guid: 8fd49d221d89ced43b9625192102438d, type: 3}
   patternName: "\uBC29\uC5B4"
   patternExplanation: "\uBC29\uC5B4"

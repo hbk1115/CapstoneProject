@@ -11,6 +11,7 @@ public class MyTurnStartState : BaseBattleState
 
     public override void Enter()
     {
+        BattleManager.instance.onStartMyTurn?.Invoke();
         CardHolder.instance.StartBattle(Player.instance.PlayerDeck);//처음 카드 초기화
         Player.instance.PlayerState.CurrentOrb = Player.instance.PlayerState.MaxOrb;
     }

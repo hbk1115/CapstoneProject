@@ -45,24 +45,16 @@ public class Player : Character
             return; // CardGenerator가 null일 경우 메서드 종료
         }
 
-        if (CurrentEnergy > 0)
-        {
-            BaseCard generatedCard = CardGenerator.GenerateCard(cardName);
+        BaseCard generatedCard = CardGenerator.GenerateCard(cardName);
 
-            if (generatedCard == null || generatedCard.cardData == null) // null 체크 추가
-            {
-                Debug.LogError("generatedCard 또는 CardData가 null입니다. 카드 생성이 실패했습니다."); // 추가 로그
-                return; // 생성된 카드가 null일 경우 메서드 종료
-            }
-
-            Debug.Log($"{generatedCard.cardData.cardName} 카드가 생성되었습니다.");
-            PlayerDeck.Add(generatedCard); // 플레이어의 덱에 추가
-            CurrentEnergy--; // 카드를 생성하면 에너지 감소
-        }
-        else
+        if (generatedCard == null || generatedCard.cardData == null) // null 체크 추가
         {
-            Debug.LogWarning("에너지가 부족하여 카드를 생성할 수 없습니다.");
+            Debug.LogError("generatedCard 또는 CardData가 null입니다. 카드 생성이 실패했습니다."); // 추가 로그
+            return; // 생성된 카드가 null일 경우 메서드 종료
         }
+
+        Debug.Log($"{generatedCard.cardData.cardName} 카드가 생성되었습니다.");
+        PlayerDeck.Add(generatedCard); // 플레이어의 덱에 추가
     }
 
     // 랜덤 카드 생성 메서드
@@ -91,6 +83,13 @@ public class Player : Character
     public void AddCard(BaseCard card)
     {
         PlayerDeck.Add(card);
+    }
+    public void RemoveCard(BaseCard card)
+    {
+        if (PlayerDeck.Count > 10)
+        {
+            PlayerDeck.Remove(card);
+        }
     }
 
     public override void Dead()

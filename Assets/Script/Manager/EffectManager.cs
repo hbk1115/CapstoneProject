@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EffectManager : MonoBehaviour
@@ -15,6 +16,14 @@ public class EffectManager : MonoBehaviour
     public GameObject normal_Hit;
     public GameObject heal_1;
     public GameObject heal_2;
+
+    [Header("≈ÿΩ∫∆Æ")]
+    public GameObject damageText;
+    public Color redColor;
+    public Color greenColor;
+    public Color blueColor;
+    public Color whiteColor;
+
     private void Awake()
     {
         instance = this;
@@ -104,6 +113,88 @@ public class EffectManager : MonoBehaviour
                 {
                     GameObject newEffect = Instantiate(heal_1);
                     return newEffect;
+                }
+        }
+    }
+
+    public GameObject GetDamageText(CardData cardData, int damage)
+    {
+        GameObject newDamage = Instantiate(damageText);
+        TextMeshProUGUI newDamageText = newDamage.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
+
+        switch (cardData.cardElement)
+        {
+            case CardElement.Fire:
+                if (cardData.cardType == CardType.Attack)
+                {
+                    newDamageText.text = damage.ToString();
+                    newDamageText.color = redColor;
+                    return newDamage;
+                }
+                else if (cardData.cardType == CardType.Resource)
+                {
+                    return null;
+                }
+                else
+                {
+                    newDamageText.text = cardData.defensePower.ToString();
+                    newDamageText.color = whiteColor;
+                    return newDamage;
+                }
+            case CardElement.Water:
+                if (cardData.cardType == CardType.Attack)
+                {
+                    newDamageText.text = damage.ToString();
+                    newDamageText.color = blueColor;
+                    return newDamage;
+                }
+                else if (cardData.cardType == CardType.Resource)
+                {
+                    return null;
+                }
+                else
+                {
+                    newDamageText.text = cardData.defensePower.ToString();
+                    newDamageText.color = whiteColor;
+                    return newDamage;
+                }
+            case CardElement.Grass:
+                if (cardData.cardType == CardType.Attack)
+                {
+                    newDamageText.text = damage.ToString();
+                    newDamageText.color = greenColor;
+                    return newDamage;
+                }
+                else if (cardData.cardType == CardType.Resource)
+                {
+                    return null;
+                }
+                else
+                {
+                    newDamageText.text = cardData.defensePower.ToString();
+                    newDamageText.color = whiteColor;
+                    return newDamage;
+                }
+            case CardElement.Common:
+                if (cardData.cardType == CardType.Attack)
+                {
+                    newDamageText.text = damage.ToString();
+                    newDamageText.color = whiteColor;
+                    return newDamage;
+                }
+                else if (cardData.cardType == CardType.Defense)
+                {
+                    newDamageText.text = cardData.defensePower.ToString();
+                    newDamageText.color = whiteColor;
+                    return newDamage;
+                }
+                else
+                {
+                    return null;
+                }
+            default:
+                {
+                    return null;
                 }
         }
     }

@@ -53,7 +53,19 @@ public class BaseCard : MonoBehaviour
 
         cost_Text.text = cardData.cost.ToString();
         name_Text.text = cardData.cardName.ToString();
-        cardType_Text.text = cardData.attackPower.ToString();
+
+        if(cardData.cardType == CardType.Attack)
+        {
+            cardType_Text.text = cardData.attackPower.ToString();
+        }
+        else if (cardData.cardType == CardType.Defense)
+        {
+            cardType_Text.text = cardData.defensePower.ToString();
+        }
+        else
+        {
+            cardType_Text.text = cardData.resourcePower.ToString();
+        }
     }
 
     public bool Play(Player player)
@@ -92,7 +104,8 @@ public class BaseCard : MonoBehaviour
     {
         if(Player.instance.PlayerState.CurrentOrb >= cardData.cost)
         {
-            SpawnEffect();
+            //SpawnEffect();
+            //SpawnDamageText();
             //AudioManager.instance.PlaySfx(AudioManager.Sfx.select_card);
 
             Player.instance.PlayerState.CurrentOrb -= cardData.cost;
@@ -135,4 +148,8 @@ public class BaseCard : MonoBehaviour
             newEffect.transform.position = BattleManager.instance.TargetEnemy(cardData.cardAttackArea).transform.position;
         }
     }
+
+    /*
+    
+    */
 }

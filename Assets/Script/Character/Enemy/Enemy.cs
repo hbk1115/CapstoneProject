@@ -27,17 +27,22 @@ public class Enemy : Character
 
         CharacterStat.Power = enemyPower;
 
+        BattleManager.instance.onStartMyTurn += OnStartMyTurn;
         BattleManager.instance.onEndEnemyTurn += OnEndEnemyTurn;
+    }
+    protected virtual void OnStartMyTurn()
+    {
+        enemyPattern.DecidePattern();
     }
     protected virtual void OnEndEnemyTurn()
     {
         CharacterIndent.UpdateIndents();
-        Debug.Log("update indent");
     }
 
     public override void Dead()
     {
         BattleManager.instance.enemyList.Remove(this);
+        BattleManager.instance.onStartMyTurn -= OnStartMyTurn;
         BattleManager.instance.onEndEnemyTurn -= OnEndEnemyTurn;
         Destroy(this.gameObject);
     }
@@ -47,8 +52,7 @@ public class Enemy : Character
         // 동상 상태일 경우 공격력 30% 감소
         if (indent[(int)EIndent.Plague])
         {
-            damage += Mathf.RoundToInt(damage * 0.2f); // 20% 추가 피해
-            Debug.Log("Freeze effect applied, damage reduced to " + damage);
+            damage += Mathf.RoundToInt(damage * 0.5f); // 20% 추가 피해
         }
 
         Debug.Log("맞았당");

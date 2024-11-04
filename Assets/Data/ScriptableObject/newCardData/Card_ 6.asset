@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3363043ed4f724b8ae825179fd8342, type: 3}
+  m_Name: Card_ 6
+  m_EditorClassIdentifier: 
+  id: 1
+  cardName: "\uC5BC\uC74C"
+  cardType: 2
+  cardAttackArea: 0
+  cost: 1
+  cardImage: {fileID: -578027032, guid: 3c433e57eddd01742a410d85dcf71c99, type: 3}
+  cardDescription: "\uB9E8 \uC67C\uCABD\uC758 \uC801\uC5D0\uAC8C \uB3D9\uC0C1\uC744
+    2\uD134 \uBD80\uC5EC\uD569\uB2C8\uB2E4."
+  cardElement: 1
+  attackPower: 0
+  defensePower: 0
+  resourcePower: 0
+  indentLength: 2
+  useEffect:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4933565667297609325, guid: 0bfcdf818f5bd364ebb84c8cf23c18af, type: 3}
+        m_TargetAssemblyTypeName: SkillCardEffect, Assembly-CSharp
+        m_MethodName: Ice
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000}
+          m_ObjectArgumentAssemblyTypeName: CardData, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

@@ -26,6 +26,7 @@ public class RoomManager : MonoBehaviour
 
     private int battle1Index = 0;
     private int battle2Index = 0;
+    private int battle3Index = 0;
     private int unknownIndex = 0;
 
     private void Awake()
@@ -37,6 +38,7 @@ public class RoomManager : MonoBehaviour
     {
         battle1Index = 0;
         battle2Index = 0;
+        battle3Index = 0;
         unknownIndex = 0;
 
         BattleData_Stage_1.ShuffleList();
@@ -48,18 +50,18 @@ public class RoomManager : MonoBehaviour
         BattleData_Boss_Stage_3.ShuffleList();
     }
 
-    public void EnterRoom(ERoomType roomType)
+    public void EnterRoom(ERoomType roomType, int stageNum)
     {
         switch (roomType)
         {
             case ERoomType.Elite:
 
-                OnEnterEliteRoom();
+                StartCoroutine(OnEnterEliteRoom(stageNum));
                 break;
             case ERoomType.Enemy:
                 //battleManager.Player.gameObject.SetActive(true);
                 //battleManager.Player.PlayerStat.IsBattle(true);
-                StartCoroutine(OnEnterEnemyRoom());
+                StartCoroutine(OnEnterEnemyRoom(stageNum));
                 break;
             case ERoomType.Merchant:
 
@@ -81,25 +83,57 @@ public class RoomManager : MonoBehaviour
     }
 
     // 일반 적 방에 들어갈 때
-    private IEnumerator OnEnterEnemyRoom()
+    private IEnumerator OnEnterEnemyRoom(int stageNum)
     {
         // 초반에 쉬운 적
         if (_isEarly)
         {
             yield return UIManager.instance.OpenDoor();
-            BattleManager.instance.StartBattle(BattleData_Stage_1[battle1Index]);
-            battle1Index++;
-            if (battle1Index == BattleData_Stage_1.Count)
-                battle1Index = 0;
+            if(stageNum == 1)
+            {
+                BattleManager.instance.StartBattle(BattleData_Stage_1[battle1Index]);
+                battle1Index++;
+                if (battle1Index == BattleData_Stage_1.Count)
+                    battle1Index = 0;
+            }
+            else if(stageNum == 2)
+            {
+                BattleManager.instance.StartBattle(BattleData_Stage_2[battle2Index]);
+                battle2Index++;
+                if (battle2Index == BattleData_Stage_2.Count)
+                    battle2Index = 0;
+            }
+            else
+            {
+                BattleManager.instance.StartBattle(BattleData_Stage_3[battle3Index]);
+                battle3Index++;
+                if (battle3Index == BattleData_Stage_3.Count)
+                    battle3Index = 0;
+            }
 
             yield return UIManager.instance.CloseDoor();
         }
     }
 
     // 엘리트 방에 들어갈 때
-    private void OnEnterEliteRoom()
+    private IEnumerator OnEnterEliteRoom(int stageNum)
     {
-        BattleManager.instance.StartBattle(BattleData_Boss_Stage_1[0]);
+        yield return UIManager.instance.OpenDoor();
+
+        if (stageNum == 1)
+        {
+            BattleManager.instance.StartBattle(BattleData_Boss_Stage_1[0]);
+        }
+        else if (stageNum == 2)
+        {
+            BattleManager.instance.StartBattle(BattleData_Boss_Stage_2[0]);
+        }
+        else
+        {
+            BattleManager.instance.StartBattle(BattleData_Boss_Stage_3[0]);
+        }
+        //BattleManager.instance.StartBattle(BattleData_Boss_Stage_1[0]);
+        yield return UIManager.instance.CloseDoor();
     }
 
     // 상인 방에 들어갈 때

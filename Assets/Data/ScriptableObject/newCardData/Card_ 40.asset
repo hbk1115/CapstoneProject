@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3363043ed4f724b8ae825179fd8342, type: 3}
+  m_Name: Card_ 40
+  m_EditorClassIdentifier: 
+  id: 6
+  cardName: "\uD749\uC791"
+  cardType: 0
+  cardAttackArea: 4
+  cost: 6
+  cardImage: {fileID: -1904952522, guid: 3c433e57eddd01742a410d85dcf71c99, type: 3}
+  cardDescription: "\uBAA8\uB4E0\uC801\uC5D0\uAC8C \uC5ED\uBCD1\uC744 1\uD134 \uBD80\uC5EC\uD558\uACE0
+    \uB370\uBBF8\uC9C0\uB97C 10\uC90D\uB2C8\uB2E4."
+  cardElement: 3
+  attackPower: 10
+  defensePower: 0
+  resourcePower: 0
+  indentLength: 1
+  useEffect:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3871956817664705132, guid: 98a087a6a5ad46f46b785903c04ccd6c, type: 3}
+        m_TargetAssemblyTypeName: AttackCardEffect, Assembly-CSharp
+        m_MethodName: Thorn
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000}
+          m_ObjectArgumentAssemblyTypeName: CardData, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

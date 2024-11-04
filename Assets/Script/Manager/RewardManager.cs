@@ -38,10 +38,13 @@ public class RewardManager : MonoBehaviour
     {
         // 돈이랑 유물만
         rewardParent.DestroyAllChild();
+        cardRewardParent.DestroyAllChild();
 
         // 보상창 켜주기
         //GameManager.UI.ShowThisUI(inRewardUI);
         inRewardUI.gameObject.SetActive(true);
+
+        DiscardCard();
 
         // 돈
         Reward moneyReward = Instantiate(rewardPrefab, rewardParent);
@@ -50,6 +53,13 @@ public class RewardManager : MonoBehaviour
         moneyReward.Init(money + "골드", moneyRewardImage);
         moneyRewardButton.onClick.AddListener(() => GetMoney(money));
         moneyRewardButton.onClick.AddListener(() => Destroy(moneyReward.gameObject));
+
+        //카드 삭제
+        cardReward = Instantiate(rewardPrefab, rewardParent);
+        Button cardRewardButton = cardReward.GetComponent<Button>();
+        cardReward.Init("덱에서 카드를 제거", cardRewardImage);
+        cardRewardButton.onClick.AddListener(() => cardRewardGameObject.gameObject.SetActive(true));
+        cardRewardButton.onClick.AddListener(() => rewardScreen.gameObject.SetActive(false));
     }
 
 
@@ -111,6 +121,17 @@ public class RewardManager : MonoBehaviour
         card1.transform.localScale = Vector3.one;
         card2.transform.localScale = Vector3.one;
         card3.transform.localScale = Vector3.one;
+    }
+    private void DiscardCard()
+    {
+        for(int i = 0; i < Player.instance.PlayerDeck.Count; i++)
+        {
+            BaseCard card = Player.instance.PlayerDeck[i];
+            card.ChangeState(ECardUsage.DisCard);
+            card.onClickAction = null;
+            card.transform.SetParent(cardRewardParent);
+            card.transform.localScale = Vector3.one;
+        }
     }
 
     public void OnClickGainCard()
