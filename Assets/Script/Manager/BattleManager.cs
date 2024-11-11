@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public enum EBattleState
 {
@@ -153,28 +151,15 @@ public class BattleManager : MonoBehaviour
             yield return null;
         }
 
-        if (Player.instance.PlayerState.IsDead)  // 플레이어가 죽었다.
+        if(stage == 4)
         {
-            //_gameScoreUI.GameOver();
-            //GameManager.UI.ShowThisUI(_gameScoreUI);
-        }
-        else if (Player.instance.PlayerState.Height >= 16)  // 보스를 깼다...
-        {
-            //StartCoroutine(GameManager.Sound.FadeInOutAudioSource(EBGM.BossClear));
-
-            //GameManager.UI.ShowThisUI(inGoEndingUI);
+            Time.timeScale = 0f;
+            UIManager.instance.GameClearWindow.SetActive(true);
         }
         else
         {
-            //onEndBattle?.Invoke();
-
-            // 클리어 처리
-            //GameManager.Game.CurrentRoom.ClearRoom();
-
-            // 보상
             Debug.Log("보상을 줍니다.");
             RewardManager.instance.ShowReward(currentBattleData);
-            //GameManager.UI.ShowThisUI(inRewardUI);
         }
     }
 

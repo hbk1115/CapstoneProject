@@ -16,13 +16,13 @@ MonoBehaviour:
   cardName: "\uD5C8\uC218\uC544\uBE44"
   cardType: 0
   cardAttackArea: 4
-  cost: 10
+  cost: 7
   cardImage: {fileID: -1876867050, guid: 3c433e57eddd01742a410d85dcf71c99, type: 3}
-  cardDescription: "\uBAA8\uB4E0 \uC801\uC5D0\uAC8C \uD53C\uD574\uB97C 10 \uC8FC\uACE0,
-    \uCCB4\uB825\uC744 20 \uD68C\uBCF5\uD569\uB2C8\uB2E4."
+  cardDescription: "\uBAA8\uB4E0 \uC801\uC5D0\uAC8C \uD53C\uD574\uB97C 11 \uC8FC\uACE0,
+    \uCCB4\uB825\uC744 10 \uD68C\uBCF5\uD569\uB2C8\uB2E4."
   cardElement: 0
-  attackPower: 10
-  defensePower: 20
+  attackPower: 11
+  defensePower: 10
   resourcePower: 0
   indentLength: 0
   useEffect:

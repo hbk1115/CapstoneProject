@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static IndentData;
 using static UnityEngine.GraphicsBuffer;
 
 public class SkillCardEffect : BaseCardEffect
@@ -8,6 +9,7 @@ public class SkillCardEffect : BaseCardEffect
     public void Matches(CardData cardData) // ¼º³É
     {
         Player.instance.PlayerState.CurrentHp += cardData.defensePower; // Ã¼·Â 20 È¸º¹
+        SpawnEffect(cardData);
     }
 
     public void Ice(CardData cardData) // ¾óÀ½.
@@ -35,6 +37,13 @@ public class SkillCardEffect : BaseCardEffect
 
     public void Toxictrap(CardData cardData) // ¸Íµ¶¼ºÇÔÁ¤
     {
+        Enemy target = BattleManager.instance.TargetEnemy(cardData.cardAttackArea);
+
+        if (target.indent[(int)EIndent.Plague])
+        {
+            Player.instance.PlayerState.CurrentHp += 20;
+        }
+
         IndentEffect(cardData, IndentData.EIndent.Plague);
     }
 
@@ -57,6 +66,7 @@ public class SkillCardEffect : BaseCardEffect
     public void RedPotion(CardData cardData) //»¡°£Ç¥¼Ç
     {
         Player.instance.PlayerState.CurrentHp += cardData.defensePower; // Ã¼·Â 50 È¸º¹
+        SpawnEffect(cardData);
     }
 
     public void Flames(CardData cardData) // ºÒ±æ
@@ -71,6 +81,7 @@ public class SkillCardEffect : BaseCardEffect
     {
         Player.instance.PlayerState.CurrentHp += cardData.defensePower;
         CardHolder.instance.DrawCard();
+        SpawnEffect(cardData);
     }
     public void FishingRod(CardData cardData)  //³¬½Ã´ë
     {
@@ -84,6 +95,7 @@ public class SkillCardEffect : BaseCardEffect
         Player.instance.PlayerState.CurrentHp += cardData.defensePower;
 
         CardHolder.instance.DrawCard();
+        SpawnEffect(cardData);
     }
 
     public void Basket(CardData cardData)  //³ª¹«»óÀÚ
@@ -91,6 +103,7 @@ public class SkillCardEffect : BaseCardEffect
         CardHolder.instance.DrawCard();
         CardHolder.instance.DrawCard();
         CardHolder.instance.DrawCard();
+        SpawnEffect(cardData);
     }
 
     public void SwarmOfRats(CardData cardData)  //Áã ¶¼
@@ -105,11 +118,13 @@ public class SkillCardEffect : BaseCardEffect
 
     public void Seeds(CardData cardData)  //¾¾¾Ñ
     {
+        SpawnEffect(cardData);
         CardHolder.instance.DrawCard();
     }
 
     public void FallenLeaves(CardData cardData) //³«¿±
     {
+        SpawnEffect(cardData);
         Player.instance.PlayerState.CurrentHp += cardData.defensePower; // Ã¼·Â 50 È¸º¹
     }
 }

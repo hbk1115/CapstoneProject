@@ -521,7 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d65f9ccf4bc00242949425c0e093da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHp: 50
+  _maxHp: 35
   _hpCanvas: {fileID: 3586934908981927415}
   _hpBar: {fileID: 2191349082840554026}
   _isPlayer: 0
@@ -539,7 +539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPatterns:
   - patternData: {fileID: 11400000, guid: 3ed1c26e4d22acf4cb75374c8b2059d3, type: 2}
-    value: 16
+    value: 13
   patternImage: {fileID: 4276167036701351255}
   patternText: {fileID: 8875372222556311112}
 --- !u!114 &-7362469711504984841

@@ -64,10 +64,22 @@ public class PlayerState : CharacterState
     {
         base.Init(character);
 
-        //Height = 0;
-        MaxOrb = 10;
-        CurrentOrb = MaxOrb;
-        //Money = 99;
-        onChangeHp += (() => hpText.text = CurrentHp + "/" + MaxHp);
+        Debug.Log(GameManager.instance.GetDifficulty());
+
+        if(GameManager.instance.GetDifficulty() == 0)
+        {
+            MaxOrb = 100;
+            CurrentOrb = MaxOrb;
+            _maxHp = 200;
+            onChangeHp += (() => hpText.text = CurrentHp + "/" + MaxHp);
+        }
+        else
+        {
+            MaxOrb = 10;
+            CurrentOrb = MaxOrb;
+            _maxHp = 40;
+            onChangeHp += (() => hpText.text = CurrentHp + "/" + MaxHp);
+        }
+        CurrentHp = MaxHp;
     }
 }

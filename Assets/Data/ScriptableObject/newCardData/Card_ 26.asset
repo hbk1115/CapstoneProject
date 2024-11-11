@@ -19,9 +19,9 @@ MonoBehaviour:
   cost: 1
   cardImage: {fileID: -442180431, guid: 3c433e57eddd01742a410d85dcf71c99, type: 3}
   cardDescription: "\uB9E8 \uC67C\uCABD\uC758 \uC801\uC5D0\uAC8C \uD53C\uD574\uB97C
-    3\uC90D\uB2C8\uB2E4. \uCF54\uC2A4\uD2B8\uB97C 1 \uD68C\uBCF5\uD569\uB2C8\uB2E4."
+    5\uC90D\uB2C8\uB2E4. \uCF54\uC2A4\uD2B8\uB97C 1 \uD68C\uBCF5\uD569\uB2C8\uB2E4."
   cardElement: 1
-  attackPower: 3
+  attackPower: 5
   defensePower: 0
   resourcePower: 0
   indentLength: 0

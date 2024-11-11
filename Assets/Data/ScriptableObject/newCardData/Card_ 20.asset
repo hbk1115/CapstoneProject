@@ -23,7 +23,7 @@ MonoBehaviour:
   cardElement: 3
   attackPower: 0
   defensePower: 7
-  resourcePower: 0
+  resourcePower: 2
   indentLength: 2
   useEffect:
   - m_PersistentCalls:

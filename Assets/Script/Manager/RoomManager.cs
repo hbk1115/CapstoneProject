@@ -29,6 +29,8 @@ public class RoomManager : MonoBehaviour
     private int battle3Index = 0;
     private int unknownIndex = 0;
 
+    private int nowStage = 1;//스테이지 넘어가는거 체크용
+
     private void Awake()
     {
         instance = this;
@@ -113,6 +115,16 @@ public class RoomManager : MonoBehaviour
 
             yield return UIManager.instance.CloseDoor();
         }
+
+        if (nowStage != BattleManager.instance.stage)//만약 스테이지가 바뀐거면 보스가 잡힌거임. 브금 바꿔줌
+        {
+            AudioManager.instance.PlayNewBgm(AudioManager.Bgm.inBattle);
+            nowStage = BattleManager.instance.stage;
+        }
+        else
+        {
+            nowStage = BattleManager.instance.stage;
+        }
     }
 
     // 엘리트 방에 들어갈 때
@@ -120,20 +132,24 @@ public class RoomManager : MonoBehaviour
     {
         yield return UIManager.instance.OpenDoor();
 
+        int num = Random.Range(0, 3);
+
         if (stageNum == 1)
         {
-            BattleManager.instance.StartBattle(BattleData_Boss_Stage_1[0]);
+            BattleManager.instance.StartBattle(BattleData_Boss_Stage_1[num]);
         }
         else if (stageNum == 2)
         {
-            BattleManager.instance.StartBattle(BattleData_Boss_Stage_2[0]);
+            BattleManager.instance.StartBattle(BattleData_Boss_Stage_2[num]);
         }
         else
         {
-            BattleManager.instance.StartBattle(BattleData_Boss_Stage_3[0]);
+            BattleManager.instance.StartBattle(BattleData_Boss_Stage_3[num]);
         }
         //BattleManager.instance.StartBattle(BattleData_Boss_Stage_1[0]);
         yield return UIManager.instance.CloseDoor();
+
+        AudioManager.instance.PlayNewBgm(AudioManager.Bgm.inBossBattle);
     }
 
     // 상인 방에 들어갈 때

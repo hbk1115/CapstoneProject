@@ -11,7 +11,7 @@ public class CharacterState : MonoBehaviour
     private Character _character;
 
     [Header("Stat")]
-    [SerializeField] private int _maxHp;
+    [SerializeField] protected int _maxHp;
     private int _currentHp;
     private int _shield;
     private int _power;

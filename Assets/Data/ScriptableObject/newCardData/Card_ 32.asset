@@ -16,11 +16,11 @@ MonoBehaviour:
   cardName: "\uB9DD\uCE58"
   cardType: 0
   cardAttackArea: 1
-  cost: 2
+  cost: 3
   cardImage: {fileID: -635729065, guid: 3c433e57eddd01742a410d85dcf71c99, type: 3}
-  cardDescription: "\uC911\uC559\uC758 \uC801\uC5D0\uAC8C \uD53C\uD574\uB97C 8\uC90D\uB2C8\uB2E4."
+  cardDescription: "\uC911\uC559\uC758 \uC801\uC5D0\uAC8C \uD53C\uD574\uB97C 16\uC90D\uB2C8\uB2E4."
   cardElement: 0
-  attackPower: 8
+  attackPower: 16
   defensePower: 0
   resourcePower: 0
   indentLength: 0

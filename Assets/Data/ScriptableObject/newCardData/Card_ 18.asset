@@ -16,7 +16,7 @@ MonoBehaviour:
   cardName: "\uB9F9\uB3C5\uC131 \uD568\uC815"
   cardType: 2
   cardAttackArea: 5
-  cost: 6
+  cost: 2
   cardImage: {fileID: 1717631422, guid: 3c433e57eddd01742a410d85dcf71c99, type: 3}
   cardDescription: "\uCCB4\uB825\uC774 \uAC00\uC7A5 \uB9CE\uC740 \uC801\uC5D0\uAC8C
     \uC5ED\uBCD1\uC744 3\uD134 \uBD80\uC5EC\uD569\uB2C8\uB2E4.\uC801\uC774 \uC774\uBBF8
@@ -24,7 +24,7 @@ MonoBehaviour:
   cardElement: 3
   attackPower: 0
   defensePower: 20
-  resourcePower: 0
+  resourcePower: 3
   indentLength: 3
   useEffect:
   - m_PersistentCalls:

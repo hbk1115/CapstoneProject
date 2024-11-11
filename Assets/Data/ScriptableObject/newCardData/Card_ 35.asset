@@ -16,7 +16,7 @@ MonoBehaviour:
   cardName: "\uBC14\uAD6C\uB2C8"
   cardType: 2
   cardAttackArea: 8
-  cost: 3
+  cost: 1
   cardImage: {fileID: 507017828, guid: 3c433e57eddd01742a410d85dcf71c99, type: 3}
   cardDescription: "\uCE74\uB4DC\uB97C 3\uC7A5 \uB4DC\uB85C\uC6B0\uD569\uB2C8\uB2E4"
   cardElement: 0

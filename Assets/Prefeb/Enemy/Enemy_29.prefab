@@ -636,7 +636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPatterns:
   - patternData: {fileID: 11400000, guid: 3ed1c26e4d22acf4cb75374c8b2059d3, type: 2}
-    value: 12
+    value: 10
   patternImage: {fileID: 8129815489929764046}
   patternText: {fileID: 160342019989507331}
 --- !u!114 &-7362469711504984841

@@ -56,7 +56,7 @@ public class CardGenerator : MonoBehaviour
 
         baseCard.Init(CardParent, cardData);
         baseCard.GetComponent<Image>().sprite = cardData.cardImage;
-        //baseCard.transform.SetParent(CardParent);// 카드 부모 설정
+        baseCard.transform.localScale = Vector3.zero;
         return baseCard;
     }
 
@@ -68,6 +68,7 @@ public class CardGenerator : MonoBehaviour
         BaseCard baseCard = Instantiate(BaseCardPrefab);
         baseCard.Init(CardParent, AllCardList[randNum]);
         baseCard.GetComponent<Image>().sprite = AllCardList[randNum].cardImage;
+        baseCard.transform.localScale = Vector3.zero;
 
         return baseCard;
     }

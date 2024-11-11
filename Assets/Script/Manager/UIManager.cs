@@ -33,9 +33,54 @@ public class UIManager : MonoBehaviour
     [Header("게임 오버")]
     [SerializeField] public GameObject GameOverWindow;
 
+    [Header("게임 클리어")]
+    [SerializeField] public GameObject GameClearWindow;
+
+    [Header("일시정지 UI")]
+    [SerializeField] public GameObject PauseWindow;
+    private bool pauseCheck = false;
+
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
+        GameManager.instance.StartGame();
+    }
+
+    private void Update()
+    {
+        /*
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(!pauseCheck)
+            {
+                SetPauseTrue();
+            }
+            else
+            {
+                SetPauseFalse();
+            }
+        }
+        */
+    }
+
+    private void SetPauseTrue()
+    {
+        Time.timeScale = 0f;
+        PauseWindow.SetActive(true);
+        pauseCheck = true;
+        AudioManager.instance.PauseBgm();
+    }
+
+    private void SetPauseFalse()
+    {
+        Time.timeScale = 1.0f;
+        PauseWindow.SetActive(false);
+        pauseCheck = false;
+        AudioManager.instance.ResumeBgm();
     }
 
     public void SetMapUI(bool check)
@@ -52,7 +97,7 @@ public class UIManager : MonoBehaviour
 
     public void OpenMapUI()
     {
-        AudioManager.instance.PlaySfx(AudioManager.Sfx.select_button);
+        //AudioManager.instance.PlaySfx(AudioManager.Sfx.select_button);
         reward_UI.SetActive(false);
         UI_Map.SetActive(true);
     }
