@@ -181,10 +181,20 @@ public class AttackCardEffect : BaseCardEffect
             if (target.indent[(int)EIndent.Plague])
             {
                 TargetHit(cardData);
+
+                if (target.CharacterStat.CurrentHp > 0)
+                {
+                    if (BattleManager.instance.enemyList.Count > 0)
+                    {
+                        TargetHit(cardData);
+                    }
+                }
+            }
+            else
+            {
+                TargetHit(cardData);
             }
         }
-
-        TargetHit(cardData);
     }
 
     public void frozenaxe(CardData cardData) //얼어붙은 도끼
@@ -200,7 +210,15 @@ public class AttackCardEffect : BaseCardEffect
             // 첫 번째 공격 후 적이 처치되었으면 한 번 더 공격
             if (target.CharacterStat.CurrentHp <= 0)
             {
-                TargetHit(cardData);
+                if (BattleManager.instance.enemyList.Count > 0)
+                {
+                    Enemy target_2 = BattleManager.instance.TargetEnemy(cardData.cardAttackArea);
+
+                    if (target_2 != null)
+                    {
+                        TargetHit(cardData);
+                    }
+                }
             }
         }
     }
@@ -214,12 +232,6 @@ public class AttackCardEffect : BaseCardEffect
         {
             // 첫 번째 공격
             TargetHit(cardData);
-
-            // 첫 번째 공격 후 적이 처치되었으면 한 번 더 공격
-            if (target.CharacterStat.CurrentHp <= 0)
-            {
-                TargetHit(cardData);
-            }
         }
     }
 
@@ -236,7 +248,15 @@ public class AttackCardEffect : BaseCardEffect
             // 첫 번째 공격 후 적이 처치되었으면 한 번 더 공격
             if (target.CharacterStat.CurrentHp <= 0)
             {
-                TargetHit(cardData);
+                if(BattleManager.instance.enemyList.Count > 0)
+                {
+                    Enemy target_2 = BattleManager.instance.TargetEnemy(cardData.cardAttackArea);
+
+                    if (target_2 != null)
+                    {
+                        TargetHit(cardData);
+                    }
+                }
             }
         }
     }
@@ -247,13 +267,27 @@ public class AttackCardEffect : BaseCardEffect
 
         if (target != null)
         {
-            if (target.indent[(int)EIndent.Freeze])
+            TargetHit(cardData);
+
+            if(target.CharacterStat.CurrentHp > 0)
             {
-                TargetHit(cardData);
+                if (target.indent[(int)EIndent.Freeze])
+                {
+                    int damage = 7;
+
+                    if (target != null)
+                    {
+                        if (target.indent[(int)EIndent.Plague])
+                        {
+                            damage += Mathf.RoundToInt(damage * 0.5f); // 20% 추가 피해
+                        }
+                        SpawnEffect(cardData, target);
+                        SpawnDamageText(cardData, damage, target);
+                        target.Hit(damage, Player.instance);
+                    }
+                }
             }
         }
-
-        TargetHit(cardData);
     }
 
     public void Snowman(CardData cardData) //눈사람
@@ -294,7 +328,7 @@ public class AttackCardEffect : BaseCardEffect
         TargetHit(cardData);
     }
 
-    public void Portabledrill(CardData cardData) //휴대용 드릴
+    public void Portabledrill(CardData cardData) //휴대용 석궁
     {
         Enemy target = BattleManager.instance.TargetEnemy(cardData.cardAttackArea);
 
@@ -303,10 +337,10 @@ public class AttackCardEffect : BaseCardEffect
             // 첫 번째 공격
             TargetHit(cardData);
 
-            // 첫 번째 공격 후 적이 처치되었으면 한 번 더 공격
+            
             if (target.CharacterStat.CurrentHp <= 0)
             {
-                TargetHit(cardData);
+                Player.instance.PlayerState.CurrentHp += 20;
             }
         }
     }
