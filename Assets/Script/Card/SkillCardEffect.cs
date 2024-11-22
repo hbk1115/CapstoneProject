@@ -98,7 +98,7 @@ public class SkillCardEffect : BaseCardEffect
         SpawnEffect(cardData);
     }
 
-    public void Basket(CardData cardData)  //나무상자
+    public void Basket(CardData cardData)  //바구니
     {
         CardHolder.instance.DrawCard();
         CardHolder.instance.DrawCard();
@@ -127,4 +127,35 @@ public class SkillCardEffect : BaseCardEffect
         SpawnEffect(cardData);
         Player.instance.PlayerState.CurrentHp += cardData.defensePower; // 체력 50 회복
     }
+
+    public void Rustyaxe(CardData cardData)  //녹슨 도끼
+    {
+        IndentEffect(cardData, IndentData.EIndent.Plague);
+    }
+
+    public void Sturdyaxe(CardData cardData)  //튼튼한 도끼
+    {
+        IndentEffect(cardData, IndentData.EIndent.Plague);
+    }
+
+    public void Heavysnow(CardData cardData) // 폭설
+    {
+        IndentAllEffect(cardData, IndentData.EIndent.Freeze);
+
+        CardHolder.instance.DrawCard(); // 첫 번째 카드 드로우
+        CardHolder.instance.DrawCard(); // 두 번째 카드 드로우;
+    }
+
+    public void Hellfire(CardData cardData)  //지옥불
+    {
+        IndentEffect(cardData, IndentData.EIndent.Burn);
+        Player.instance.PlayerState.CurrentHp += cardData.defensePower; // 체력 10 회복
+    }
+
+    public void Frostywind(CardData cardData)  //서리바람
+    {
+        IndentEffect(cardData, IndentData.EIndent.Freeze);
+        Player.instance.PlayerState.CurrentHp += cardData.defensePower; // 체력 20 회복
+    }
+
 }

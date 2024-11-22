@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3363043ed4f724b8ae825179fd8342, type: 3}
+  m_Name: Card_ 49
+  m_EditorClassIdentifier: 
+  id: 2
+  cardName: "\uD734\uB300\uC6A9 \uB4DC\uB9B4"
+  cardType: 0
+  cardAttackArea: 2
+  cost: 6
+  cardImage: {fileID: -1904952522, guid: 3c433e57eddd01742a410d85dcf71c99, type: 3}
+  cardDescription: "\uB9E8 \uB4A4\uC758 \uC801\uC5D0\uAC8C \uD53C\uD574\uB97C 25
+    \uC90D\uB2C8\uB2E4. \uC774 \uD53C\uD574\uB85C \uC801\uC744 \uCC98\uCE58 \uD588\uC744
+    \uACBD\uC6B0, \uCCB4\uB825\uC744 20 \uD68C\uBCF5\uD569\uB2C8\uB2E4."
+  cardElement: 0
+  attackPower: 25
+  defensePower: 0
+  resourcePower: 0
+  indentLength: 0
+  useEffect:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3871956817664705132, guid: 98a087a6a5ad46f46b785903c04ccd6c, type: 3}
+        m_TargetAssemblyTypeName: AttackCardEffect, Assembly-CSharp
+        m_MethodName: Portabledrill
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000}
+          m_ObjectArgumentAssemblyTypeName: CardData, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

@@ -60,9 +60,9 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         pauseMenu.OpenInGameButton();
-        Player.instance.GenerateCard("호미");
-        Player.instance.GenerateCard("호미");
-        Player.instance.GenerateCard("호미");
+        Player.instance.GenerateCard("모닥불");
+        Player.instance.GenerateCard("마그마");
+        Player.instance.GenerateCard("서리바람");
         Player.instance.GenerateCard("호미");
         Player.instance.GenerateCard("호미");
         Player.instance.GenerateCard("호미");

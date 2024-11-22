@@ -171,4 +171,241 @@ public class AttackCardEffect : BaseCardEffect
         IndentAllEffect(cardData, EIndent.Plague);
         TargetAllHit(cardData);
     }
+
+    public void Plaguespit(CardData cardData) // 역병의침
+    {
+        Enemy target = BattleManager.instance.TargetEnemy(cardData.cardAttackArea);
+
+        if (target != null)
+        {
+            if (target.indent[(int)EIndent.Plague])
+            {
+                TargetHit(cardData);
+            }
+        }
+
+        TargetHit(cardData);
+    }
+
+    public void frozenaxe(CardData cardData) //얼어붙은 도끼
+    {
+        // 체력이 가장 적은 적을 찾음
+        Enemy target = BattleManager.instance.TargetEnemy(cardData.cardAttackArea);
+
+        if (target != null)
+        {
+            // 첫 번째 공격
+            TargetHit(cardData);
+
+            // 첫 번째 공격 후 적이 처치되었으면 한 번 더 공격
+            if (target.CharacterStat.CurrentHp <= 0)
+            {
+                TargetHit(cardData);
+            }
+        }
+    }
+
+    public void Ironaxe(CardData cardData) //쇠도끼
+    {
+        // 체력이 가장 적은 적을 찾음
+        Enemy target = BattleManager.instance.TargetEnemy(cardData.cardAttackArea);
+
+        if (target != null)
+        {
+            // 첫 번째 공격
+            TargetHit(cardData);
+
+            // 첫 번째 공격 후 적이 처치되었으면 한 번 더 공격
+            if (target.CharacterStat.CurrentHp <= 0)
+            {
+                TargetHit(cardData);
+            }
+        }
+    }
+
+    public void Burningaxe(CardData cardData)//불타는 도끼
+    {
+        // 체력이 가장 적은 적을 찾음
+        Enemy target = BattleManager.instance.TargetEnemy(cardData.cardAttackArea);
+
+        if (target != null)
+        {
+            // 첫 번째 공격
+            TargetHit(cardData);
+
+            // 첫 번째 공격 후 적이 처치되었으면 한 번 더 공격
+            if (target.CharacterStat.CurrentHp <= 0)
+            {
+                TargetHit(cardData);
+            }
+        }
+    }
+
+    public void Chill(CardData cardData) //한기
+    {
+        Enemy target = BattleManager.instance.TargetEnemy(cardData.cardAttackArea);
+
+        if (target != null)
+        {
+            if (target.indent[(int)EIndent.Freeze])
+            {
+                TargetHit(cardData);
+            }
+        }
+
+        TargetHit(cardData);
+    }
+
+    public void Snowman(CardData cardData) //눈사람
+    {
+        IndentEffect(cardData, EIndent.Freeze);
+        TargetHit(cardData);
+    }
+
+    public void Fireball(CardData cardData) // 화염구
+    {
+        List<Enemy> enemies = new List<Enemy>(BattleManager.instance.enemyList);//새로운 적 리스트
+        List<Enemy> brunEnemies = new();
+
+        foreach (Enemy enemy in enemies)
+        {
+            if (enemy.indent[(int)EIndent.Burn])
+            {
+                brunEnemies.Add(enemy);
+            }
+        }
+
+        if (brunEnemies.Count > 0)
+        {
+            int randEnemyNum = Random.Range(0, brunEnemies.Count);
+
+            Enemy target = brunEnemies[randEnemyNum];
+
+            if (target != null)
+            {
+                TargetHit(cardData, target);
+            }
+        }
+    }
+
+    public void Firearrow(CardData cardData) //불꽃 화살
+    {
+        IndentEffect(cardData, EIndent.Burn);
+        TargetHit(cardData);
+    }
+
+    public void Portabledrill(CardData cardData) //휴대용 드릴
+    {
+        Enemy target = BattleManager.instance.TargetEnemy(cardData.cardAttackArea);
+
+        if (target != null)
+        {
+            // 첫 번째 공격
+            TargetHit(cardData);
+
+            // 첫 번째 공격 후 적이 처치되었으면 한 번 더 공격
+            if (target.CharacterStat.CurrentHp <= 0)
+            {
+                TargetHit(cardData);
+            }
+        }
+    }
+
+    public void Filthbomb(CardData cardData) // 오물폭탄
+    {
+        List<Enemy> enemies = new List<Enemy>(BattleManager.instance.enemyList);//새로운 적 리스트
+        List<Enemy> plagueEnemies = new();
+
+        foreach (Enemy enemy in enemies)
+        {
+            if (enemy.indent[(int)EIndent.Plague])
+            {
+                plagueEnemies.Add(enemy);
+            }
+        }
+
+        if (plagueEnemies.Count > 0)
+        {
+            int randEnemyNum = Random.Range(0, plagueEnemies.Count);
+
+            Enemy target = plagueEnemies[randEnemyNum];
+
+            if (target != null)
+            {
+                TargetHit(cardData, target);
+            }
+        }
+    }
+
+    public void Icesword(CardData cardData) //얼음검
+    {
+        IndentEffect(cardData, EIndent.Freeze);
+        TargetHit(cardData);
+    }
+
+    public void Flamesword(CardData cardData) //화염검
+    {
+        IndentEffect(cardData, EIndent.Burn);
+        TargetHit(cardData);
+    }
+
+    public void Plaguesword(CardData cardData) //역병검
+    {
+        IndentEffect(cardData, EIndent.Plague);
+        TargetHit(cardData);
+    }
+
+    public void Magma(CardData cardData) // 마그마
+
+    {
+        List<Enemy> enemies = new List<Enemy>(BattleManager.instance.enemyList);//새로운 적 리스트
+        List<Enemy> brunEnemies = new();
+
+        foreach (Enemy enemy in enemies)
+        {
+            if (enemy.indent[(int)EIndent.Burn])
+            {
+                brunEnemies.Add(enemy);
+            }
+        }
+
+        if (brunEnemies.Count > 0)
+        {
+            int randEnemyNum = Random.Range(0, brunEnemies.Count);
+
+            Enemy target = brunEnemies[randEnemyNum];
+
+            if (target != null)
+            {
+                TargetHit(cardData, target);
+            }
+        }
+    }
+
+    public void Pollution(CardData cardData) // 오염
+    {
+        List<Enemy> enemies = new List<Enemy>(BattleManager.instance.enemyList);//새로운 적 리스트
+        List<Enemy> plagueEnemies = new();
+
+        foreach (Enemy enemy in enemies)
+        {
+            if (enemy.indent[(int)EIndent.Plague])
+            {
+                plagueEnemies.Add(enemy);
+            }
+        }
+
+        if (plagueEnemies.Count > 0)
+        {
+            int randEnemyNum = Random.Range(0, plagueEnemies.Count);
+
+            Enemy target = plagueEnemies[randEnemyNum];
+
+            if (target != null)
+            {
+                TargetHit(cardData, target);
+            }
+        }
+    }
 }
+
